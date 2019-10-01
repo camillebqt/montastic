@@ -33,4 +33,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [ ] Implement the function that allows users to delete checkpoints (DELETE request)
 - [ ] Implement the function that allows users to edit checkpoints (PATCH request)
 - [ ] Implement the function that allows users to see the informations of checkpoints (GET request)
-- [ ] Deposit on github
+- [x] Deposit on github
