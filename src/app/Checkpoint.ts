@@ -1,6 +1,9 @@
 export class Checkpoint {
   id: number;
+  url: string;
   name: string;
+  status: number;
+  status_changed_on: number;
   content: string;
   updated: string;
   queue: string;
