@@ -1,20 +1,100 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!DOCTYPE html>
+<html>
+<body
+  class="application home">
 
+<div class="container" style="margin-left:auto; margin-right:auto;">
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-xs-9 pull-left" style="margin-top:50px;">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-xs-2 pull-left" id="header-logo">
+            <img src='assets/img/logo_montastic.png'/>
+        </div>
+        <div class="col-lg-9 col-md-9 col-xs-10 pull-right" id="header-text">
+          <h1><span class="title">Montastic</span> <span>®</span></h1>
+          <p><span class="subtitle">The Simple Website Monitoring Service</span></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="new_checkpoint" id="new_checkpoint" action="/home" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="c8uxs015Jawfp8LMkIdHC2ETjcTDbDXgomiuctYDfOkpuivDGDeFr11j9uuwnrGoeVS8Hw8fI7yHayv5jWRVuw==" />
+            <div class="row padding-form-new-checkpoint">
+              <div class="col-sm-4">
+                <label for="checkpoint_Verify this site is up">Verify this site is up</label>
+              </div>
+            </div>
+            <div class="row padding-form-new-checkpoint">
+              <div class="col-sm-12">
+                <input class="form-control form-control-url" placeholder="http://www.your-site.com/page1" autofocus="autofocus" onfocus="this.value=this.value;" autocomplete="off" type="text" value="" name="checkpoint[url]" id="checkpoint_url" />
+                <input value="true" type="hidden" name="checkpoint[check_now]" id="checkpoint_check_now" />
+                <input type="submit" name="commit" value="Go" class="btn btn-success edit-submit-button" id="new-checkpoint-button" data-disable-with="Please wait..." />
+                - <a href="#new-checkpoint-examples" style='font-size: .9em' data-toggle="collapse">options</a>
+                <br>&nbsp;
+              </div>
+            </div>
+            <div class="collapse text-muted" id="new-checkpoint-examples">
+              <div id="new-checkpoint-collapse">
+                <div class="row padding-form-new-checkpoint">
+                  <div class="col-sm-12">
+                    <label style="font-weight:normal;text-transform:lowercase;" class="text-muted" for="checkpoint_and optionally verify this text">And optionally verify this text</label>
+                    <input class="form-control" style="width: 23%;display: inline-block;margin-left: 2%;" type="text" name="checkpoint[grep_this]" id="checkpoint_grep_this" />
+                    <label class="checkbox-inline" style="margin-left:0;padding-left:0;">
+                      <input type="radio" value="1" checked="checked" name="checkpoint[grep_presence]" id="checkpoint_grep_presence_1" /><span class="text-muted"> is present</span>
+                    </label>
+                    <label class="checkbox-inline" style="margin-left:0;padding-left:0;">
+                      <input type="radio" value="0" name="checkpoint[grep_presence]" id="checkpoint_grep_presence_0" /> <span class="text-muted"> is not present</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar" class="col-lg-2 col-md-2 col-xs-3 pull-right" style="margin-top:50px;">
+      <div id="user-sidebar" class="panel panel-default"
+           style="xwidth:180px;">
+        <div class="panel-heading">Welcome!</div>
+        <div class="panel-body">
+          <a class='btn btn-block btn-success'
+             href="/signup">
+            <i class="fa fa-rocket" aria-hidden="true"></i>&nbsp;Signup for free</a>
+          <a class='btn btn-default btn-block' href="/login">Login</a>
+          <hr>
+          <ul class="nav nav-pills nav-stacked ">
+            <li role="presentation">
+              <a href="http://support.metadot.com/">
+                <i class="fa fa-wrench fa-fw" aria-hidden="true"></i>&nbsp; Support</a>
+            </li>
+            <li role="presentation">
+              <a href="https://github.com/montastic/montastic-api-doc">
+                <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp; REST API</a>
+            </li>
+            <li role="presentation">
+              <a href="/pricing_page">
+                <i class="fa fa-dollar fa-fw" aria-hidden="true"></i>&nbsp; Pricing</a>
+            </li>
+            <li role="presentation">
+              <a href="https://twitter.com/montastic">
+                <i class="fa fa-twitter fa-fw" aria-hidden="true"></i>&nbsp; @montastic</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<footer>
+  <div class="container" style="margin-left:auto; margin-right:auto;">
+    <div id="copyright" class="text-muted">
+      Montastic is made by <a href="http://www.metadot.com" target="_blank">Metadot</a> in Austin, Texas.
+      &nbsp;<a href='/privacy'>Privacy notice</a>.
+    </div>
+    <div id="version" class="text-muted text-center">
+      Version : 20190907.145457
+    </div>
+  </div>
+</footer>
+</html>

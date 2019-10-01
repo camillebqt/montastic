@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Tasks list
+
+- [x] Implement the appearance of the site
+- [ ] Implement the function that allows users to create checkpoints (POST request)
+- [ ] Implement the function that allows users to delete checkpoints (DELETE request)
+- [ ] Implement the function that allows users to edit checkpoints (PATCH request)
+- [ ] Implement the function that allows users to see the informations of checkpoints (GET request)
+- [ ] Deposit on github
