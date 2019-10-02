@@ -3,24 +3,28 @@ export class Checkpoint {
   url: string;
   name: string;
   status: number;
-  status_changed_on: number;
-  content: string;
-  updated: string;
-  queue: string;
-  agent: number;
-  priority: number;
-  statut: number;
-  watch: number;
-  constructor(data = {id: null, name: '', content: '', updated: '', queue: '', agent: null, priority: null, statut: null, watch: null}) {
+  statusChangedon: string;
+  checkResultcode: string;
+  isMonitoringenabled: boolean;
+  checkIntervalid: number;
+  grepThis: string;
+  grepPresence: boolean;
+  notes: string;
+  badgeToken: string;
+  constructor(data = {id: null, url: '', name: '', status: null, statusChangedon: '', checkResultcode: '', isMonitoringenabled: null,
+                      checkIntervalid: null, grepThis: '', grepPresence: null, notes: '', badgeToken: ''}) {
     this.id = data.id;
+    this.url = data.url;
     this.name = data.name;
-    this.content = data.content;
-    this.updated = data.updated;
-    this.queue = data.queue;
-    this.agent = data.agent;
-    this.priority = data.priority;
-    this.statut = data.statut;
-    this.watch = data.watch;
+    this.status = data.status;
+    this.statusChangedon = data.statusChangedon;
+    this.checkResultcode = data.checkResultcode;
+    this.isMonitoringenabled = data.isMonitoringenabled;
+    this.checkIntervalid = data.checkIntervalid;
+    this.grepThis = data.grepThis;
+    this.grepPresence = data.grepPresence;
+    this.notes = data.notes;
+    this.badgeToken = data.badgeToken;
   }
 
 }

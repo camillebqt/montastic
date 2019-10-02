@@ -6,58 +6,58 @@ import { catchError, map } from 'rxjs/operators';
 import { Checkpoint } from './Checkpoint';
 
 @Injectable()
-export class TicketsService {
-  private ticketsUrl = 'app/tickets'; // URL to web api
+export class CheckpointService {
+  private CheckpointUrl = 'https://www.montastic.com/checkpoints'; // URL to web api
 
   constructor(private http: HttpClient) {}
 
-  getTickets() {
+  getCheckpoints() {
     return this.http
-      .get<Ticket[]>(this.ticketsUrl)
+      .get<Checkpoint[]>(this.CheckpointUrl)
       .pipe(map(data => data), catchError(this.handleError));
   }
 
-  getTicket(id: number): Observable<Ticket> {
-    return this.getTickets().pipe(
-      map(tickets => tickets.find(ticket => ticket.id === id))
+  getCheckpoint(id: number): Observable<Checkpoint> {
+    return this.getCheckpoints().pipe(
+      map(checkpoints => checkpoints.find(checkpoint => checkpoint.id === id))
     );
   }
 
-  save(ticket: Ticket) {
-    if (ticket.id) {
-      return this.put(ticket);
+  save(checkpoint: Checkpoint) {
+    if (checkpoint.id) {
+      return this.put(checkpoint);
     }
-    return this.post(ticket);
+    return this.post(checkpoint);
   }
 
-  delete(ticket: Ticket) {
+  delete(checkpoint: Checkpoint) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = `${this.ticketsUrl}/${ticket.id}`;
+    const url = `${this.CheckpointUrl}/${checkpoint.id}`;
 
-    return this.http.delete<Ticket>(url).pipe(catchError(this.handleError));
+    return this.http.delete<Checkpoint>(url).pipe(catchError(this.handleError));
   }
 
-  // Add new Ticket
-  private post(ticket: Ticket) {
+  // Add new Checkpoint
+  private post(checkpoint: Checkpoint) {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
 
     return this.http
-      .post<Ticket>(this.ticketsUrl, ticket)
+      .post<Checkpoint>(this.CheckpointUrl, checkpoint)
       .pipe(catchError(this.handleError));
   }
 
-  // Update existing Ticket
-  private put(ticket: Ticket) {
+  // Update existing Checkpoint
+  private put(checkpoint: Checkpoint) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = `${this.ticketsUrl}/${ticket.id}`;
+    const url = `${this.CheckpointUrl}/${checkpoint.id}`;
 
-    return this.http.put<Ticket>(url, ticket).pipe(catchError(this.handleError));
+    return this.http.put<Checkpoint>(url, checkpoint).pipe(catchError(this.handleError));
   }
 
   private handleError(res: HttpErrorResponse | any) {
