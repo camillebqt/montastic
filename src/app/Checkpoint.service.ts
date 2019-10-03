@@ -1,22 +1,33 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError as observableThrowError } from 'rxjs';
+import {Observable, of, throwError as observableThrowError} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Checkpoint } from './Checkpoint';
 
+const checkpointMock: Checkpoint[] = [
+  {
+    id: 1,
+    url: 'google.com'
+  },
+  {
+   id: 2,
+   url: 'daskeyboard.com'
+  }
+] as Checkpoint[];
 @Injectable()
 export class CheckpointService {
   private CheckpointUrl = 'https://montastic.com/checkpoints'; // URL to web api
   constructor(private http: HttpClient) {}
 
   getCheckpoints() {
-    const headers = new HttpHeaders({'X-API-KEY': '61029b064c0491d0ef5ea6b2e1b8df2b995af5a2', Accept: 'application/json'});
+    /*const headers = new HttpHeaders({'X-API-KEY': '61029b064c0491d0ef5ea6b2e1b8df2b995af5a2', Accept: 'application/json'});
     return this.http
       .get<Checkpoint[]>(this.CheckpointUrl, {
         headers
       })
-      .pipe(map(data => data), catchError(this.handleError));
+      .pipe(map(data => data), catchError(this.handleError));*/
+    return of(checkpointMock);
   }
 
   getCheckpoint(id: number): Observable<Checkpoint> {

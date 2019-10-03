@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Checkpoint} from '../Checkpoint';
 
 @Component({
   selector: 'app-checkpoint',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkpoint.component.scss']
 })
 export class CheckpointComponent implements OnInit {
-
+  checkpoints = Checkpoint;
+selectedCheckpoint: Checkpoint;
+onSelect(checkpoint: Checkpoint): void {
+  this.selectedCheckpoint = checkpoint;
+}
   constructor() { }
 
   ngOnInit() {

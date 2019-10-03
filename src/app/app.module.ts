@@ -5,15 +5,23 @@ import { AppComponent } from './app.component';
 import { CheckpointComponent } from './checkpoint/checkpoint.component';
 import {CheckpointService} from './Checkpoint.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { ChecklistListComponent } from './checklist-list/checklist-list.component';
+import {RouterModule, Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'checklist', component: ChecklistListComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    CheckpointComponent
+    CheckpointComponent,
+    ChecklistListComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [CheckpointService, HttpClient],
   bootstrap: [AppComponent]
