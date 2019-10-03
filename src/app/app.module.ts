@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CheckpointComponent } from './checkpoint/checkpoint.component';
+import {CheckpointService} from './Checkpoint.service';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,10 @@ import { CheckpointComponent } from './checkpoint/checkpoint.component';
     CheckpointComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CheckpointService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

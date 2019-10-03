@@ -25,9 +25,9 @@
             </div>
             <div class="row padding-form-new-checkpoint">
               <div class="col-sm-12">
-                <input class="form-control form-control-url" placeholder="http://www.your-site.com/page1" autofocus="autofocus" onfocus="this.value=this.value;" autocomplete="off" type="text" value="" name="checkpoint[url]" id="checkpoint_url" />
-                <input value="true" type="hidden" name="checkpoint[check_now]" id="checkpoint_check_now" />
-                <input type="submit" name="commit" value="Go" class="btn btn-success edit-submit-button" id="new-checkpoint-button" data-disable-with="Please wait..." />
+                <input class="form-control form-control-url"  placeholder="http://www.your-site.com/page1" autocomplete="off" type="text"/>
+                <input type="hidden"/>
+                <input type="submit" name="commit" (click)="addCheckpoints()" value="Go" class="btn btn-success edit-submit-button" data-disable-with="Please wait..." />
                 - <a href="#new-checkpoint-examples" style='font-size: .9em' data-toggle="collapse">options</a>
                 <br>&nbsp;
               </div>

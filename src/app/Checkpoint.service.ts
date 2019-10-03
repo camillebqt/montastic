@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -7,13 +7,15 @@ import { Checkpoint } from './Checkpoint';
 
 @Injectable()
 export class CheckpointService {
-  private CheckpointUrl = 'https://www.montastic.com/checkpoints'; // URL to web api
-
+  private CheckpointUrl = 'https://montastic.com/checkpoints'; // URL to web api
   constructor(private http: HttpClient) {}
 
   getCheckpoints() {
+    const headers = new HttpHeaders({'X-API-KEY': '61029b064c0491d0ef5ea6b2e1b8df2b995af5a2', Accept: 'application/json'});
     return this.http
-      .get<Checkpoint[]>(this.CheckpointUrl)
+      .get<Checkpoint[]>(this.CheckpointUrl, {
+        headers
+      })
       .pipe(map(data => data), catchError(this.handleError));
   }
 
@@ -40,13 +42,14 @@ export class CheckpointService {
   }
 
   // Add new Checkpoint
-  private post(checkpoint: Checkpoint) {
-    const headers = new Headers({
-      'Content-Type': 'application/json'
+  post(checkpoint: Checkpoint) {
+    const headers = new HttpHeaders({
+      'X-API-KEY': '61029b064c0491d0ef5ea6b2e1b8df2b995af5a2', Accept: 'application/json', 'Content-type': 'application/json'
     });
-
     return this.http
-      .post<Checkpoint>(this.CheckpointUrl, checkpoint)
+      .post<Checkpoint>(this.CheckpointUrl, checkpoint, {
+        headers
+      })
       .pipe(catchError(this.handleError));
   }
 
