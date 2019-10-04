@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CheckpointService} from '../Checkpoint.service';
 import {Checkpoint} from '../Checkpoint';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-checkpoint',
@@ -13,7 +14,7 @@ export class CheckpointComponent implements OnInit {
   private check: Checkpoint;
   checkpoints: Checkpoint[];
   error: any;
-  constructor(private checkpointService: CheckpointService) {
+  constructor(private checkpointService: CheckpointService, private router: Router) {
     checkpointService.getCheckpoints().subscribe(res => {
       console.log(res);
     });

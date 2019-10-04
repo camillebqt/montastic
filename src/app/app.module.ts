@@ -9,7 +9,14 @@ import { ChecklistListComponent } from './checklist-list/checklist-list.componen
 import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
-  { path: 'checklist', component: ChecklistListComponent }
+  { path: 'checkpoint', component: CheckpointComponent },
+  {
+    path: '',
+    component: CheckpointComponent,
+    children: [
+      { path: 'checklist', component: ChecklistListComponent }
+    ]
+  }
 ];
 
 @NgModule({
@@ -21,7 +28,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [CheckpointService, HttpClient],
   bootstrap: [AppComponent]
