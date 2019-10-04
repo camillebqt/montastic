@@ -7,6 +7,7 @@ import {CheckpointService} from './checkpoint.service/checkpoint.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { CheckpointListComponent } from './checkpoint-list/checkpoint-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [CheckpointService, HttpClient],
   bootstrap: [AppComponent]

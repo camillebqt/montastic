@@ -27,7 +27,7 @@
               <div class="col-sm-12">
                 <input class="form-control form-control-url"  placeholder="http://www.your-site.com/page1" autocomplete="off" type="text"/>
                 <input type="hidden"/>
-                <input type="submit" name="commit" (click)="addCheckpoints()" value="Go" class="btn btn-success edit-submit-button" data-disable-with="Please wait..." />
+                <input routerLinkActive="active" [routerLink]="['/checklist']" type="submit" name="commit" (click)="save()" value="Go" class="btn btn-success edit-submit-button" data-disable-with="Please wait..." />
                 - <a href="#new-checkpoint-examples" style='font-size: .9em' data-toggle="collapse">options</a>
                 <div routerLinkActive="active" [routerLink]="['/checklist']">
                   <a data-toggle="collapse" href="#see-the-checklist" style="width:100%">See the checklist</a>

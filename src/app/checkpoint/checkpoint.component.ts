@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {CheckpointService} from '../checkpoint.service/checkpoint.service';
 import {Checkpoint} from '../checkpoint-feature/checkpoint';
 import {Router} from '@angular/router';
@@ -9,28 +9,41 @@ import {Router} from '@angular/router';
   styleUrls: ['./checkpoint.component.scss']
 })
 export class CheckpointComponent implements OnInit {
-  id: number;
-  title = 'montastic';
+  @Input() checkpoint: Checkpoint;
   private check: Checkpoint;
-  checkpoints: Checkpoint[];
   error: any;
+  navigated = false;
+  checkpoints: Checkpoint[];
+  @Output() close = new EventEmitter();
   constructor(private checkpointService: CheckpointService, private router: Router) {
-    checkpointService.getCheckpoints().subscribe(res => {
+    /*checkpointService.getCheckpoints().subscribe(res => {
       console.log(res);
     });
     checkpointService.post(this.check).subscribe(res => {
       console.log(res);
-    });
+    });*/
   }
-  addCheckpoints() {
+/*  addCheckpoints() {
     this.checkpointService
       .post(this.check)
       .subscribe(
         checkpoints => (this.checkpoints),
         error => (this.error = error)
       );
+  }*/
+
+  save(): void {
+    this.checkpointService.save(this.checkpoint).subscribe(checkpoint => {
+      this.checkpoint = checkpoint; // saved ticket, w/ id if new
+      this.goBack(checkpoint);
+    }, error => (this.error = error));
+  }
+  goBack(savedCheckpoint: Checkpoint = null): void {
+    this.close.emit(savedCheckpoint);
+    if (this.navigated) {
+      window.history.back();
+    }
   }
   ngOnInit(): void {
-    this.addCheckpoints();
   }
 }

@@ -17,7 +17,7 @@ const checkpointMock: Checkpoint[] = [
 ] as Checkpoint[];
 @Injectable()
 export class CheckpointService {
-  private CheckpointUrl = 'https://montastic.com/checkpoints'; // URL to web api
+  private CheckpointUrl = 'app/checkpoint'; // URL to web api
   constructor(private http: HttpClient) {}
 
   getCheckpoints() {
@@ -27,7 +27,11 @@ export class CheckpointService {
         headers
       })
       .pipe(map(data => data), catchError(this.handleError));*/
+
     return of(checkpointMock);
+    return this.http
+      .get<Checkpoint[]>(this. CheckpointUrl)
+      .pipe(map(data => data), catchError(this.handleError));
   }
 
   getCheckpoint(id: number): Observable<Checkpoint> {
@@ -53,14 +57,15 @@ export class CheckpointService {
   }
 
   // Add new Checkpoint
-  post(checkpoint: Checkpoint) {
+  private post(checkpoint: Checkpoint) {
     const headers = new HttpHeaders({
-      'X-API-KEY': '61029b064c0491d0ef5ea6b2e1b8df2b995af5a2', Accept: 'application/json', 'Content-type': 'application/json'
+      // 'X-API-KEY': '61029b064c0491d0ef5ea6b2e1b8df2b995af5a2', Accept: 'application/json', 'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     });
     return this.http
-      .post<Checkpoint>(this.CheckpointUrl, checkpoint, {
+      .post<Checkpoint>(this.CheckpointUrl, checkpoint/*, {
         headers
-      })
+      }*/)
       .pipe(catchError(this.handleError));
   }
 

@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: CheckpointComponent,
     children: [
-      { path: 'checklist', component: CheckpointListComponent }
+      { path: 'checklist', component: CheckpointListComponent },
     ]
   }
 ];

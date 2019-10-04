@@ -15,7 +15,7 @@ export class CheckpointListComponent implements OnInit {
   constructor(private checkpointService: CheckpointService) { }
 
   ngOnInit() {
-    this.getCheckpoints ();
+    this.getCheckpoints();
   }
   getCheckpoints(): void {
     this.checkpointService
