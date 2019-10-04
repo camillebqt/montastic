@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CheckpointComponent } from './checkpoint/checkpoint.component';
-import {CheckpointService} from './Checkpoint.service';
+import {CheckpointService} from './checkpoint.service/checkpoint.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { ChecklistListComponent } from './checklist-list/checklist-list.component';
 import {RouterModule, Routes} from '@angular/router';
+import { CheckpointListComponent } from './checkpoint-list/checkpoint-list.component';
 
 const appRoutes: Routes = [
   { path: 'checkpoint', component: CheckpointComponent },
@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     path: '',
     component: CheckpointComponent,
     children: [
-      { path: 'checklist', component: ChecklistListComponent }
+      { path: 'checklist', component: CheckpointListComponent }
     ]
   }
 ];
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CheckpointComponent,
-    ChecklistListComponent
+    CheckpointListComponent
   ],
   imports: [
     BrowserModule,

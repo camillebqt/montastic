@@ -12,7 +12,7 @@ export class Checkpoint {
   notes: string;
   badgeToken: string;
   constructor(data = {id: null, url: '', name: '', status: null, statusChangedon: '', checkResultcode: '', isMonitoringenabled: null,
-                      checkIntervalid: null, grepThis: '', grepPresence: null, notes: '', badgeToken: ''}) {
+    checkIntervalid: null, grepThis: '', grepPresence: null, notes: '', badgeToken: ''}) {
     this.id = data.id;
     this.url = data.url;
     this.name = data.name;

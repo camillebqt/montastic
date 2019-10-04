@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Checkpoint} from '../Checkpoint';
-import {CheckpointService} from '../Checkpoint.service';
-
+import {Checkpoint} from '../checkpoint-feature/checkpoint';
+import {CheckpointService} from '../checkpoint.service/checkpoint.service';
 @Component({
-  selector: 'app-checklist-list',
-  templateUrl: './checklist-list.component.html',
-  styleUrls: ['./checklist-list.component.scss']
+  selector: 'app-checkpoint-list',
+  templateUrl: './checkpoint-list.component.html',
+  styleUrls: ['./checkpoint-list.component.scss']
 })
-export class ChecklistListComponent implements OnInit {
+export class CheckpointListComponent implements OnInit {
 
   checkpoints: Checkpoint[];
   selectedCheckpoint: Checkpoint;

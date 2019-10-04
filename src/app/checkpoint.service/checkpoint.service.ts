@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable, of, throwError as observableThrowError} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { Checkpoint } from './Checkpoint';
+import { Checkpoint } from '../checkpoint-feature/checkpoint';
 
 const checkpointMock: Checkpoint[] = [
   {
@@ -11,8 +11,8 @@ const checkpointMock: Checkpoint[] = [
     url: 'google.com'
   },
   {
-   id: 2,
-   url: 'daskeyboard.com'
+    id: 2,
+    url: 'daskeyboard.com'
   }
 ] as Checkpoint[];
 @Injectable()
