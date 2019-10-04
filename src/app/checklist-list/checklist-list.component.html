@@ -1,8 +1,5 @@
 <div class="container" style="width: 100% !important; ">
-  <p style="margin-left: 5px;">These tickets need to be assigned to an agent.</p>
-  <ul class="tickets">
     <span class="ticket-element">
-      <!--<div  *ngIf="!tickets.length">Aucun ticket non assigne</div>-->
       <div class="table-responsive text-nowrap" style="width: 100%;height: 320px;  "> <!--*ngIf="tickets.length"-->
         <table class="table">
             <tr *ngFor="let checkpoint of checkpoints" (click)="onSelect(checkpoint)" [class.selected]="checkpoint === selectedCheckpoint">
@@ -12,11 +9,10 @@
         </table>
       </div>
     </span>
-  </ul>
 </div>
 <div *ngIf="selectedCheckpoint">
   <h2>
-    {{selectedCheckpoint.name}} is my ticket.
+    {{selectedCheckpoint.url}} is my website.
   </h2>
 </div>
 

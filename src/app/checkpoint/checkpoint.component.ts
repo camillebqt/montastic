@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CheckpointService} from '../Checkpoint.service';
 import {Checkpoint} from '../Checkpoint';
 
 @Component({
@@ -7,14 +8,28 @@ import {Checkpoint} from '../Checkpoint';
   styleUrls: ['./checkpoint.component.scss']
 })
 export class CheckpointComponent implements OnInit {
-  checkpoints = Checkpoint;
-selectedCheckpoint: Checkpoint;
-onSelect(checkpoint: Checkpoint): void {
-  this.selectedCheckpoint = checkpoint;
-}
-  constructor() { }
-
-  ngOnInit() {
+  id: number;
+  title = 'montastic';
+  private check: Checkpoint;
+  checkpoints: Checkpoint[];
+  error: any;
+  constructor(private checkpointService: CheckpointService) {
+    checkpointService.getCheckpoints().subscribe(res => {
+      console.log(res);
+    });
+    checkpointService.post(this.check).subscribe(res => {
+      console.log(res);
+    });
   }
-
+  addCheckpoints() {
+    this.checkpointService
+      .post(this.check)
+      .subscribe(
+        checkpoints => (this.checkpoints),
+        error => (this.error = error)
+      );
+  }
+  ngOnInit(): void {
+    this.addCheckpoints();
+  }
 }
