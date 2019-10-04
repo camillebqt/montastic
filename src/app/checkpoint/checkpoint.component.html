@@ -17,10 +17,10 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <form class="new_checkpoint" id="new_checkpoint" action="/home" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="c8uxs015Jawfp8LMkIdHC2ETjcTDbDXgomiuctYDfOkpuivDGDeFr11j9uuwnrGoeVS8Hw8fI7yHayv5jWRVuw==" />
+          <form>
             <div class="row padding-form-new-checkpoint">
               <div class="col-sm-4">
-                <label for="checkpoint_Verify this site is up">Verify this site is up</label>
+                <label>Verify this site is up</label>
               </div>
             </div>
             <div class="row padding-form-new-checkpoint">
@@ -29,17 +29,17 @@
                 <input type="hidden"/>
                 <input type="submit" name="commit" (click)="addCheckpoints()" value="Go" class="btn btn-success edit-submit-button" data-disable-with="Please wait..." />
                 - <a href="#new-checkpoint-examples" style='font-size: .9em' data-toggle="collapse">options</a>
-                <br>&nbsp;
-                <div class="list">
-                  <app-checkpoint-list></app-checkpoint-list>
+                <div routerLinkActive="active" [routerLink]="['/checklist']">
+                  <a data-toggle="collapse" href="#see-the-checklist" style="width:100%">See the checklist</a>
                 </div>
+                <br>&nbsp;
               </div>
             </div>
             <div class="collapse text-muted" id="new-checkpoint-examples">
               <div id="new-checkpoint-collapse">
                 <div class="row padding-form-new-checkpoint">
                   <div class="col-sm-12">
-                    <label style="font-weight:normal;text-transform:lowercase;" class="text-muted" for="checkpoint_and optionally verify this text">And optionally verify this text</label>
+                    <label style="font-weight:normal;text-transform:lowercase;" class="text-muted">And optionally verify this text</label>
                     <input class="form-control" style="width: 23%;display: inline-block;margin-left: 2%;" type="text" name="checkpoint[grep_this]" id="checkpoint_grep_this" />
                     <label class="checkbox-inline" style="margin-left:0;padding-left:0;">
                       <input type="radio" value="1" checked="checked" name="checkpoint[grep_presence]" id="checkpoint_grep_presence_1" /><span class="text-muted"> is present</span>
@@ -50,6 +50,9 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="collapse text-muted" id="see-the-checklist">
+              <router-outlet></router-outlet>
             </div>
           </form>
         </div>
