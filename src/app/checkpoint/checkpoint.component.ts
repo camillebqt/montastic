@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {CheckpointService} from '../checkpoint.service/checkpoint.service';
-import {Checkpoint} from '../checkpoint-feature/checkpoint';
+import {CheckpointService} from '../models/checkpoint.service';
+import {Checkpoint} from '../models/checkpoint';
 import {Router} from '@angular/router';
 
 @Component({

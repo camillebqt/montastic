@@ -3,18 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CheckpointComponent } from './checkpoint/checkpoint.component';
-import {CheckpointService} from './checkpoint.service/checkpoint.service';
+import {CheckpointService} from './models/checkpoint.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { CheckpointListComponent } from './checkpoint-list/checkpoint-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms';
+import { InfocheckpointComponent } from './infocheckpoint/infocheckpoint.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckpointComponent,
-    CheckpointListComponent
+    CheckpointListComponent,
+    InfocheckpointComponent
   ],
   imports: [
     BrowserModule,

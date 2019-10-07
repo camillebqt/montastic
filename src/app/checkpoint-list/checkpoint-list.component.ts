@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Checkpoint} from '../checkpoint-feature/checkpoint';
-import {CheckpointService} from '../checkpoint.service/checkpoint.service';
+import {Checkpoint} from '../models/checkpoint';
+import {CheckpointService} from '../models/checkpoint.service';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-checkpoint-list',
   templateUrl: './checkpoint-list.component.html',
@@ -12,7 +14,7 @@ export class CheckpointListComponent implements OnInit {
   selectedCheckpoint: Checkpoint;
   error: any;
   addingCheckpoint = false;
-  constructor(private checkpointService: CheckpointService) { }
+  constructor(private checkpointService: CheckpointService, private router: Router) { }
 
   ngOnInit() {
     this.getCheckpoints();
@@ -28,5 +30,8 @@ export class CheckpointListComponent implements OnInit {
   onSelect(checkpoint: Checkpoint): void {
     this.selectedCheckpoint = checkpoint;
     this.addingCheckpoint = false;
+  }
+  gotoDetail(): void {
+    this.router.navigate(['/info', this.selectedCheckpoint.id]);
   }
 }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable, of, throwError as observableThrowError} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { Checkpoint } from '../checkpoint-feature/checkpoint';
+import { Checkpoint } from './checkpoint';
 
 const checkpointMock: Checkpoint[] = [
   {
