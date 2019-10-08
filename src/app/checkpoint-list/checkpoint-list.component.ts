@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../models/checkpoint.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-checkpoint-list',
@@ -9,15 +9,27 @@ import {Router} from '@angular/router';
   styleUrls: ['./checkpoint-list.component.scss']
 })
 export class CheckpointListComponent implements OnInit {
-
+  @Input() checkpoint: Checkpoint;
+  @Output() close = new EventEmitter();
+  navigated = false; // true if navigated here
   checkpoints: Checkpoint[];
   selectedCheckpoint: Checkpoint;
   error: any;
   addingCheckpoint = false;
-  constructor(private checkpointService: CheckpointService, private router: Router) { }
+  constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getCheckpoints();
+    this.route.params.forEach((params: Params) => {
+      if (params.id !== undefined) {
+        const id = +params.id;
+        this.navigated = true;
+        this.checkpointService.getCheckpoint(id).subscribe(checkpoint => (this.checkpoint = checkpoint));
+      } else {
+        this.navigated = false;
+        this.checkpoint = new Checkpoint();
+      }
+    });
   }
   getCheckpoints(): void {
     this.checkpointService
@@ -32,6 +44,8 @@ export class CheckpointListComponent implements OnInit {
     this.addingCheckpoint = false;
   }
   gotoDetail(): void {
-    this.router.navigate(['/info', this.selectedCheckpoint.id]);
+    this.router.navigate(['/checkpoints', this.selectedCheckpoint.id]);
+    this.onSelect(this.checkpoint);
   }
 }
+

@@ -24,12 +24,12 @@
               </div>
             </div>
             <div class="row padding-form-new-checkpoint">
-              <div class="col-sm-12">
-                <input class="form-control form-control-url"  placeholder="http://www.your-site.com/page1" autocomplete="off" type="text"/>
-                <input type="hidden"/>
-                <input routerLinkActive="active" [routerLink]="['/checklist']" type="submit" name="commit" (click)="save()" value="Go" class="btn btn-success edit-submit-button" data-disable-with="Please wait..." />
+              <div class="col-sm-12" *ngIf="checkpoint">
+                <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.url" name="first" placeholder="http://www.your-site.com/page1">
+                <button routerLink="/checkpoints" class="btn btn-success edit-submit-button" (click)="save()">Save</button>
+                <!--<button routerLinkActive="active" [routerLink]="['/checkpoints']" type="submit" name="commit" (click)="save()" value="Go" class="btn btn-success edit-submit-button" data-disable-with="Please wait...">Go</button>-->
                 - <a href="#new-checkpoint-examples" style='font-size: .9em' data-toggle="collapse">options</a>
-                <div routerLinkActive="active" [routerLink]="['/checklist']">
+                <div routerLinkActive="active" [routerLink]="['/checkpoints']">
                   <a data-toggle="collapse" href="#see-the-checklist" style="width:100%">See the checklist</a>
                 </div>
                 <br>&nbsp;

@@ -1,7 +1,7 @@
 export class Checkpoint {
   id: number;
   url: string;
-  name: string;
+  /*name: string;
   status: number;
   statusChangedon: string;
   checkResultcode: string;
@@ -10,12 +10,12 @@ export class Checkpoint {
   grepThis: string;
   grepPresence: boolean;
   notes: string;
-  badgeToken: string;
-  constructor(data = {id: null, url: '', name: '', status: null, statusChangedon: '', checkResultcode: '', isMonitoringenabled: null,
-    checkIntervalid: null, grepThis: '', grepPresence: null, notes: '', badgeToken: ''}) {
+  badgeToken: string;*/
+  constructor(data = {id: null, url: ''/*, name: '', status: null, statusChangedon: '', checkResultcode: '', isMonitoringenabled: null,
+    checkIntervalid: null, grepThis: '', grepPresence: null, notes: '', badgeToken: ''*/}) {
     this.id = data.id;
     this.url = data.url;
-    this.name = data.name;
+    /*this.name = data.name;
     this.status = data.status;
     this.statusChangedon = data.statusChangedon;
     this.checkResultcode = data.checkResultcode;
@@ -24,7 +24,7 @@ export class Checkpoint {
     this.grepThis = data.grepThis;
     this.grepPresence = data.grepPresence;
     this.notes = data.notes;
-    this.badgeToken = data.badgeToken;
+    this.badgeToken = data.badgeToken;*/
   }
 
 }

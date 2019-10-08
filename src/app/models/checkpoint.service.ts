@@ -5,19 +5,10 @@ import { catchError, map } from 'rxjs/operators';
 
 import { Checkpoint } from './checkpoint';
 
-const checkpointMock: Checkpoint[] = [
-  {
-    id: 1,
-    url: 'google.com'
-  },
-  {
-    id: 2,
-    url: 'daskeyboard.com'
-  }
-] as Checkpoint[];
+
 @Injectable()
 export class CheckpointService {
-  private CheckpointUrl = 'app/checkpoint'; // URL to web api
+  private CheckpointUrl = 'app/checkpoints'; // URL to web api
   constructor(private http: HttpClient) {}
 
   getCheckpoints() {
@@ -28,9 +19,8 @@ export class CheckpointService {
       })
       .pipe(map(data => data), catchError(this.handleError));*/
 
-    return of(checkpointMock);
     return this.http
-      .get<Checkpoint[]>(this. CheckpointUrl)
+      .get<Checkpoint[]>(this.CheckpointUrl)
       .pipe(map(data => data), catchError(this.handleError));
   }
 
@@ -63,9 +53,9 @@ export class CheckpointService {
       'Content-Type': 'application/json'
     });
     return this.http
-      .post<Checkpoint>(this.CheckpointUrl, checkpoint/*, {
+      .post<Checkpoint>(this.CheckpointUrl, checkpoint)/*, {
         headers
-      }*/)
+      })*/
       .pipe(catchError(this.handleError));
   }
 

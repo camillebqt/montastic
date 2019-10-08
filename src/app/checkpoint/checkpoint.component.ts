@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {CheckpointService} from '../models/checkpoint.service';
 import {Checkpoint} from '../models/checkpoint';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router, Params} from '@angular/router';
 
 @Component({
   selector: 'app-checkpoint',
@@ -10,12 +10,11 @@ import {Router} from '@angular/router';
 })
 export class CheckpointComponent implements OnInit {
   @Input() checkpoint: Checkpoint;
-  private check: Checkpoint;
   error: any;
   navigated = false;
   checkpoints: Checkpoint[];
   @Output() close = new EventEmitter();
-  constructor(private checkpointService: CheckpointService, private router: Router) {
+  constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) {
     /*checkpointService.getCheckpoints().subscribe(res => {
       console.log(res);
     });
@@ -34,7 +33,7 @@ export class CheckpointComponent implements OnInit {
 
   save(): void {
     this.checkpointService.save(this.checkpoint).subscribe(checkpoint => {
-      this.checkpoint = checkpoint; // saved ticket, w/ id if new
+      this.checkpoint = checkpoint;
       this.goBack(checkpoint);
     }, error => (this.error = error));
   }
@@ -45,5 +44,15 @@ export class CheckpointComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.route.params.forEach((params: Params) => {
+      if (params.id !== undefined) {
+        const id = +params.id;
+        this.navigated = true;
+        this.checkpointService.getCheckpoint(id).subscribe(checkpoint => (this.checkpoint = checkpoint));
+      } else {
+        this.navigated = false;
+        this.checkpoint = new Checkpoint();
+      }
+    });
   }
 }
