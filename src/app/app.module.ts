@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { InMemoryDataService } from './models/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
 import { NgModule } from '@angular/core';
+import { CheckpointInfoComponent } from './checkpoint-info/checkpoint-info.component';
 
 
 
@@ -16,7 +17,8 @@ import { NgModule } from '@angular/core';
   declarations: [
     AppComponent,
     CheckpointComponent,
-    CheckpointListComponent
+    CheckpointListComponent,
+    CheckpointInfoComponent
   ],
   imports: [
     BrowserModule,
