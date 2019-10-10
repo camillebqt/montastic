@@ -5,8 +5,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { CheckpointListComponent } from './checkpoint-list/checkpoint-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms';
-//import { InMemoryDataService } from './models/in-memory-data.service';
-import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
 import { NgModule } from '@angular/core';
 import { CheckpointInfoComponent } from './checkpoint-info/checkpoint-info.component';
 import { HeaderComponentComponent } from './header-component/header-component.component';
@@ -27,11 +25,6 @@ import { FooterComponentComponent } from './footer-component/footer-component.co
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    /*HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-      delay: 300,
-      passThruUnknownUrl: true
-    }),*/
   ],
   providers: [CheckpointService, HttpClient],
   bootstrap: [AppComponent]
