@@ -2,13 +2,12 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {CheckpointService} from '../models/checkpoint.service';
 import {Checkpoint} from '../models/checkpoint';
 import {ActivatedRoute, Router, Params} from '@angular/router';
-
 @Component({
-  selector: 'app-checkpoint',
-  templateUrl: './checkpoint.component.html',
-  styleUrls: ['./checkpoint.component.scss']
+  selector: 'app-header-component',
+  templateUrl: './header-component.component.html',
+  styleUrls: ['./header-component.component.scss']
 })
-export class CheckpointComponent implements OnInit {
+export class HeaderComponentComponent implements OnInit {
   @Input() checkpoint: Checkpoint;
   error: any;
   navigated = false;
@@ -22,14 +21,14 @@ export class CheckpointComponent implements OnInit {
       console.log(res);
     });*/
   }
-/*  addCheckpoints() {
-    this.checkpointService
-      .post(this.check)
-      .subscribe(
-        checkpoints => (this.checkpoints),
-        error => (this.error = error)
-      );
-  }*/
+  /*  addCheckpoints() {
+      this.checkpointService
+        .post(this.check)
+        .subscribe(
+          checkpoints => (this.checkpoints),
+          error => (this.error = error)
+        );
+    }*/
 
   save(): void {
     this.checkpointService.save(this.checkpoint).subscribe(checkpoint => {

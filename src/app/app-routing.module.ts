@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CheckpointComponent } from './checkpoint/checkpoint.component';
 import {CheckpointListComponent} from './checkpoint-list/checkpoint-list.component';
 import {CheckpointInfoComponent} from './checkpoint-info/checkpoint-info.component';
+import {HeaderComponentComponent} from './header-component/header-component.component';
 
 const routes: Routes = [
-  { path: '', component: CheckpointComponent },
+  { path: '', component: HeaderComponentComponent },
   { path: 'checkpoints', component: CheckpointListComponent },
   { path: 'checkpoints/:id', component: CheckpointInfoComponent }
 ];
