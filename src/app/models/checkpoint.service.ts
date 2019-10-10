@@ -8,7 +8,7 @@ import { Checkpoint } from './checkpoint';
 
 @Injectable()
 export class CheckpointService {
-  private CheckpointUrl = 'http://localhost:4200/https://montastic.com/checkpoints'; // URL to web api : app/checkpoints
+  private CheckpointUrl = 'http/localhost:4200/https://montastic.com/checkpoints'; // URL to web api : app/checkpoints
   constructor(private http: HttpClient) {}
 
   getCheckpoints() {
