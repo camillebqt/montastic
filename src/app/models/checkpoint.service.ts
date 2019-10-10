@@ -2,13 +2,11 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import {Observable, of, throwError as observableThrowError} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-
 import { Checkpoint } from './checkpoint';
-
 
 @Injectable()
 export class CheckpointService {
-  private CheckpointUrl = 'http/localhost:4200/https://montastic.com/checkpoints'; // URL to web api : app/checkpoints
+  private CheckpointUrl = 'https://montastic.com/checkpoints';
   constructor(private http: HttpClient) {}
 
   getCheckpoints() {
