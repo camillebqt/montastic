@@ -20,16 +20,6 @@ export class CheckpointListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCheckpoints();
-    this.route.params.forEach((params: Params) => {
-      if (params.id !== undefined) {
-        const id = +params.id;
-        this.navigated = true;
-        this.checkpointService.getCheckpoint(id).subscribe(checkpoint => (this.checkpoint = checkpoint));
-      } else {
-        this.navigated = false;
-        this.checkpoint = new Checkpoint();
-      }
-    });
   }
   getCheckpoints(): void {
     this.checkpointService

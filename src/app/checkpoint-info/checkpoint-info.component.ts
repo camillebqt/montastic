@@ -31,18 +31,4 @@ export class CheckpointInfoComponent implements OnInit {
       }
     });
   }
-
-  save(): void {
-    this.checkpointService.save(this.checkpoint).subscribe(checkpoint => {
-      this.checkpoint = checkpoint; // saved ticket, w/ id if new
-      this.goBack(checkpoint);
-    }, error => (this.error = error));
-  }
-
-  goBack(savedCheckpoint: Checkpoint = null): void {
-    this.close.emit(savedCheckpoint);
-    if (this.navigated) {
-      window.history.back();
-    }
-  }
 }
