@@ -6,11 +6,14 @@ import { Checkpoint } from './checkpoint';
 
 @Injectable()
 export class CheckpointService {
-  private CheckpointUrl = 'https://montastic.com/checkpoints';
+  private CheckpointUrl = 'https://app.bamzoogle.com/workspaces/JK6PWOCMNL7ISQZ/teams';
+
   constructor(private http: HttpClient) {}
 
   getCheckpoints() {
-    const headers = new HttpHeaders({'X-API-KEY': '61029b064c0491d0ef5ea6b2e1b8df2b995af5a2', Accept: 'application/json',
+    const headers = new HttpHeaders({'Access-Control-Allow-Origin' : 'http://localhost:4200',
+      'Access-Control-Allow-Methods': 'GET, POST',
+      'X-API-KEY': 'd4942cc2205c473abda2bfc4b7e884768229d73262384d4aad75f6ca262e9037', Accept: 'application/json',
       'Content-Type': 'application/json'});
     return this.http
       .get<Checkpoint[]>(this.CheckpointUrl, {
@@ -47,7 +50,9 @@ export class CheckpointService {
 
   // Add new Checkpoint
   private post(checkpoint: Checkpoint) {
-    const headers = new HttpHeaders({'X-API-KEY': '61029b064c0491d0ef5ea6b2e1b8df2b995af5a2', Accept: 'application/json',
+    const headers = new HttpHeaders({'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Methods': 'GET, POST',
+      'X-API-KEY': 'd4942cc2205c473abda2bfc4b7e884768229d73262384d4aad75f6ca262e9037', Accept: 'application/json',
       'Content-type': 'application/json'});
       // 'Content-Type': 'application/json'
     return this.http

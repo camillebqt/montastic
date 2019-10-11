@@ -20,6 +20,7 @@ export class CheckpointListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCheckpoints();
+
   }
   getCheckpoints(): void {
     this.checkpointService
