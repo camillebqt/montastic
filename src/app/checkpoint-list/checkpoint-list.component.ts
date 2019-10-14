@@ -34,6 +34,14 @@ export class CheckpointListComponent implements OnInit {
     this.selectedCheckpoint = checkpoint;
     this.addingCheckpoint = false;
   }
+  getCheckpoint(id: string){
+    this.checkpointService
+      .getCheckpoint(id)
+      .subscribe(
+        checkpoints => (checkpoints = checkpoints),
+        error => (this.error = error)
+      );
+  }
   gotoDetail(): void {
     this.router.navigate(['/checkpoints', this.selectedCheckpoint.id]);
     this.onSelect(this.checkpoint);

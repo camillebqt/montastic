@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable, of, throwError as observableThrowError} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Checkpoint } from './checkpoint';
-import {API_BASE_URL} from './global';
+import {API_URL, API_BASE_URL} from './global';
 
 @Injectable()
 export class CheckpointService {
@@ -27,7 +27,7 @@ export class CheckpointService {
   }
 
   getCheckpoint(id: string): Observable<Checkpoint> {
-    const URL = API_BASE_URL + `/checklists/${id}`;
+    const URL = API_URL + `/checklists/${id}`;
     const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
     return this.http
       .get<Checkpoint>(URL, {
