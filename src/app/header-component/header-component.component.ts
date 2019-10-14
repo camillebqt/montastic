@@ -45,7 +45,7 @@ export class HeaderComponentComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       if (params.id !== undefined) {
-        const id = +params.id;
+        const id: string = params.id;
         this.navigated = true;
         this.checkpointService.getCheckpoint(id).subscribe(checkpoint => (this.checkpoint = checkpoint));
       } else {

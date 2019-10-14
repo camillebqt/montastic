@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 import {Observable, of, throwError as observableThrowError} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Checkpoint } from './checkpoint';
+import {API_BASE_URL} from './global';
 
 @Injectable()
 export class CheckpointService {
-  private CheckpointUrl = 'https://app.bamzoogle.com/workspaces/JK6PWOCMNL7ISQZ/teams';
+  // private CheckpointUrl = 'https://api.bamzoogle.com/api/v1/workspaces/JK6PWOCMNL7ISQZ';
+  readonly API_KEY = 'BAM-d4942cc2205c473abda2bfc4b7e884768229d73262384d4aad75f6ca262e9037';
 
   constructor(private http: HttpClient) {}
 
-  getCheckpoints() {
-    const headers = new HttpHeaders({'Access-Control-Allow-Origin' : 'http://localhost:4200',
-      'Access-Control-Allow-Methods': 'GET, POST',
-      'X-API-KEY': 'd4942cc2205c473abda2bfc4b7e884768229d73262384d4aad75f6ca262e9037', Accept: 'application/json',
-      'Content-Type': 'application/json'});
+  getCheckpoints(): Observable<Checkpoint[]> {
+    const URL = API_BASE_URL + '/checklists';
+    const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
     return this.http
-      .get<Checkpoint[]>(this.CheckpointUrl, {
+      .get<Checkpoint[]>(URL, {
         headers
       })
       .pipe(map(data => data), catchError(this.handleError));
@@ -26,10 +26,18 @@ export class CheckpointService {
       .pipe(map(data => data), catchError(this.handleError));*/
   }
 
-  getCheckpoint(id: number): Observable<Checkpoint> {
-    return this.getCheckpoints().pipe(
-      map(checkpoints => checkpoints.find(checkpoint => checkpoint.id === id))
-    );
+  getCheckpoint(id: string): Observable<Checkpoint> {
+    const URL = API_BASE_URL + `/checklists/${id}`;
+    const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
+    return this.http
+      .get<Checkpoint>(URL, {
+        headers
+      })
+      .pipe(map(data => data), catchError(this.handleError));
+
+    /*    return this.http
+          .get<Checkpoint[]>(this.CheckpointUrl)
+          .pipe(map(data => data), catchError(this.handleError));*/
   }
 
   save(checkpoint: Checkpoint) {
@@ -50,26 +58,34 @@ export class CheckpointService {
 
   // Add new Checkpoint
   private post(checkpoint: Checkpoint) {
-    const headers = new HttpHeaders({'Access-Control-Allow-Origin': 'http://localhost:4200',
-      'Access-Control-Allow-Methods': 'GET, POST',
-      'X-API-KEY': 'd4942cc2205c473abda2bfc4b7e884768229d73262384d4aad75f6ca262e9037', Accept: 'application/json',
-      'Content-type': 'application/json'});
-      // 'Content-Type': 'application/json'
+    const URL = API_BASE_URL + `/checklists`;
+    const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
     return this.http
-      .post<Checkpoint>(this.CheckpointUrl, checkpoint, {
+      .post<Checkpoint>(URL, checkpoint,{
+        headers
+      })
+      .pipe(map(data => data), catchError(this.handleError));
+  }
+/*  private post(checkpoint: Checkpoint) {
+    const URL = API_BASE_URL + '/checklists';
+    const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
+    // 'Content-Type': 'application/json'
+    return this.http
+      .post<Checkpoint>(URL, checkpoint, {
         headers
       })
       .pipe(catchError(this.handleError));
-  }
+  }*/
 
   // Update existing Checkpoint
   private put(checkpoint: Checkpoint) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    const url = `${this.CheckpointUrl}/${checkpoint.id}`;
-
-    return this.http.put<Checkpoint>(url, checkpoint).pipe(catchError(this.handleError));
+    const URL = API_BASE_URL + `/checklists`;
+    const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
+    return this.http
+      .put<Checkpoint>(URL, checkpoint, {
+        headers
+      })
+      .pipe(map(data => data), catchError(this.handleError));
   }
 
   private handleError(res: HttpErrorResponse | any) {

@@ -4,7 +4,7 @@
         <table class="table">
             <tr *ngFor="let checkpoint of checkpoints" (click)="onSelect(checkpoint)" [class.selected]="checkpoint === selectedCheckpoint">
               <td scope="col"><span class="label label-default" >{{checkpoint.id}}</span></td>
-              <td scope="col"><span class="label label-default" >{{checkpoint.url}}</span></td>
+              <td scope="col"><span class="label label-default" >{{checkpoint.title}}</span></td>
             </tr>
         </table>
       </div>
@@ -13,7 +13,7 @@
   <div *ngIf="selectedCheckpoint">
     <div *ngIf="selectedCheckpoint.id" (click)="gotoDetail()">
       <h2>
-        {{selectedCheckpoint.id}} : {{selectedCheckpoint.url}} is my website.
+        {{selectedCheckpoint.id}} : {{selectedCheckpoint.title}} is my website.
       </h2>
     </div>
   <!--  <div>
