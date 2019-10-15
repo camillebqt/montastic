@@ -10,4 +10,7 @@
       <td>{{checkpoint.title}}</td>
     </tr>
   </table>
+  <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
+  <button routerLink="/checkpoints" class="btn btn-success edit-submit-button" (click)="save()">Update</button>
+  <button routerLink="/checkpoints" class="btn btn-success edit-submit-button" (click)="delete()">Delete</button>
 </div>

@@ -45,16 +45,20 @@ export class CheckpointService {
       return this.put(checkpoint);
     }
     return this.post(checkpoint);
+    return this.put(checkpoint);
   }
 
-/*  delete(checkpoint: Checkpoint) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
 
-    const url = `${this.CheckpointUrl}/${checkpoint.id}`;
-
-    return this.http.delete<Checkpoint>(url).pipe(catchError(this.handleError));
-  }*/
+  // Delete existing Checkpoint
+  delete(checkpoint: Checkpoint) {
+    const URL = API_URL + `/checklists/${checkpoint.id}`;
+    const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
+    return this.http
+      .delete<Checkpoint>(URL, {
+        headers
+      })
+      .pipe(map(data => data), catchError(this.handleError));
+  }
 
   // Add new Checkpoint
   private post(checkpoint: Checkpoint) {
@@ -79,10 +83,10 @@ export class CheckpointService {
 
   // Update existing Checkpoint
   private put(checkpoint: Checkpoint) {
-    const URL = API_BASE_URL + `/checklists`;
+    const URL = API_URL + `/checklists/${checkpoint.id}`;
     const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
     return this.http
-      .put<Checkpoint>(URL, checkpoint, {
+      .patch<Checkpoint>(URL, checkpoint, {
         headers
       })
       .pipe(map(data => data), catchError(this.handleError));
