@@ -4,6 +4,7 @@ import {Observable, of, throwError as observableThrowError} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Checkpoint } from './checkpoint';
 import {API_URL, API_BASE_URL} from './global';
+import {Team} from './team';
 
 @Injectable()
 export class CheckpointService {
@@ -12,8 +13,27 @@ export class CheckpointService {
 
   constructor(private http: HttpClient) {}
 
-  getCheckpoints(): Observable<Checkpoint[]> {
-    const URL = API_BASE_URL + '/checklists';
+  getTeams(): Observable<Team[]> {
+    const URL = API_BASE_URL + '/all_my_teams';
+    const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
+    return this.http
+      .get<Team[]>(URL, {
+        headers
+      })
+      .pipe(map(data => data), catchError(this.handleError));
+  }
+  getTeam(id: string): Observable<Team> {
+    const URL = API_BASE_URL + `/all_my_teams/${id}`;
+    const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
+    return this.http
+      .get<Team>(URL, {
+        headers
+      })
+      .pipe(map(data => data), catchError(this.handleError));
+  }
+
+  getCheckpoints(projetId): Observable<Checkpoint[]> {
+    const URL = API_BASE_URL + '/checklists?project_id=' + projetId;
     const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
     return this.http
       .get<Checkpoint[]>(URL, {

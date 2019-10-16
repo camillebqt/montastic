@@ -15,6 +15,7 @@ export class CheckpointListComponent implements OnInit {
   checkpoints: Checkpoint[];
   selectedCheckpoint: Checkpoint;
   error: any;
+  @Input() projectId: string;
   addingCheckpoint = false;
   constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) { }
 
@@ -24,7 +25,7 @@ export class CheckpointListComponent implements OnInit {
   }
   getCheckpoints(): void {
     this.checkpointService
-      .getCheckpoints()
+      .getCheckpoints(this.projectId)
       .subscribe(
         checkpoints => (this.checkpoints = checkpoints),
         error => (this.error = error)

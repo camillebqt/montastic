@@ -3,7 +3,7 @@ export class Checkpoint {
   title: string;
   clazzName = 'Checklist';
   description: null;
-  project_id = 'WP0R5O7QNAHIZSM';
+  project_id: string;
   status = 20;
   type = 'ChecklistTemplate';
   /*name: string;

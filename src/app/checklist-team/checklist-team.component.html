@@ -1,0 +1,15 @@
+<div class="container" style="width: 100% !important; ">
+    <span class="ticket-element">
+      <div class="table-responsive text-nowrap" style="width: 100%;height: 320px;">
+        <div class="dropdown" dropdown>
+          <button dropdownToggle id="btn-new2" role="button" class="btn btn-danger" style="width:100%">Teams</button>
+          <ul *dropdownMenu class="dropdown-menu">
+            <div *ngFor="let team of teams" (click)="onSelect(team)" [class.selected]="team === selectedTeam">
+              {{team.name}}
+              <app-checkpoint-list [projectId]="team.id"></app-checkpoint-list>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </span>
+</div>
