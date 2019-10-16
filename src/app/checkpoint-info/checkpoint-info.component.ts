@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../models/checkpoint.service';
 @Component({
@@ -16,7 +16,8 @@ export class CheckpointInfoComponent implements OnInit {
 
   constructor(
     private checkpointService: CheckpointService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,18 +36,14 @@ export class CheckpointInfoComponent implements OnInit {
   save(): void {
     this.checkpointService.save(this.checkpoint).subscribe(checkpoint => {
       this.checkpoint = checkpoint;
-      this.goBack(checkpoint);
+      this.router.navigate(['']);
     }, error => (this.error = error));
   }
-  goBack(savedCheckpoint: Checkpoint = null): void {
-    this.close.emit(savedCheckpoint);
-    if (this.navigated) {
-      window.history.back();
-    }
-  }
+
   delete(): void {
     this.checkpointService.delete(this.checkpoint).subscribe(checkpoint => {
       this.checkpoint = checkpoint;
+      this.router.navigate(['']);
     }, error => (this.error = error));
   }
 }

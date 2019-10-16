@@ -1,0 +1,20 @@
+<form>
+  <div class="row padding-form-new-checkpoint">
+    <div class="col-sm-4">
+      <label>Create a checklist</label>
+    </div>
+  </div>
+  <div class="row padding-form-new-checkpoint">
+    <div class="col-sm-12" *ngIf="checkpoint">
+      <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
+      <button routerLink="/checkpoints" class="btn btn-success edit-submit-button" (click)="save()">Save</button>
+      <div>
+        <a data-toggle="collapse" href="#see-the-checklist" style="width:100%">See the checklist</a>
+      </div>
+      <br>&nbsp;
+    </div>
+  </div>
+  <div class="collapse text-muted" id="see-the-checklist">
+    <app-checkpoint-list></app-checkpoint-list>
+  </div>
+</form>

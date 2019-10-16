@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { CheckpointInfoComponent } from './checkpoint-info/checkpoint-info.component';
 import { HeaderComponentComponent } from './header-component/header-component.component';
 import { FooterComponentComponent } from './footer-component/footer-component.component';
+import { AddChecklistComponent } from './add-checklist/add-checklist.component';
 
 
 
@@ -18,7 +19,8 @@ import { FooterComponentComponent } from './footer-component/footer-component.co
     CheckpointListComponent,
     CheckpointInfoComponent,
     HeaderComponentComponent,
-    FooterComponentComponent
+    FooterComponentComponent,
+    AddChecklistComponent
   ],
   imports: [
     BrowserModule,

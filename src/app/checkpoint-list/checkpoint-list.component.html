@@ -13,14 +13,11 @@
   <div *ngIf="selectedCheckpoint">
     <div *ngIf="selectedCheckpoint.id" (click)="gotoDetail()">
       <h2>
-        {{selectedCheckpoint.title}} is my website.
-        Click here to see the details.
+        {{selectedCheckpoint.id}} : {{selectedCheckpoint.title}} is my website.
+        Click here to see the checklists.
 
       </h2>
     </div>
-  <!--  <div>
-      <button class="btn btn-primary" *ngIf="selectedCheckpoint.id" (click)="gotoDetail()">View Details</button>
-    </div>-->
   </div>
 </div>
 

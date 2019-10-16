@@ -1,95 +1,12 @@
-<!DOCTYPE html>
-<html>
-<body
-  class="application home">
-
 <div class="container" style="margin-left:auto; margin-right:auto;">
-  <div class="row">
-    <div class="col-lg-8 col-md-8 col-xs-9 pull-left" style="margin-top:50px;">
-      <div class="row">
-        <div class="col-lg-3 col-md-3 col-xs-2 pull-left" id="header-logo">
-          <img src='assets/img/logo_montastic.png'/>
-        </div>
-        <div class="col-lg-9 col-md-9 col-xs-10 pull-right" id="header-text">
-          <h1><span class="title">Montastic</span> <span>®</span></h1>
-          <p><span class="subtitle">The Simple Website Monitoring Service</span></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <form>
-            <div class="row padding-form-new-checkpoint">
-              <div class="col-sm-4">
-                <label>Verify this site is up</label>
-              </div>
-            </div>
-            <div class="row padding-form-new-checkpoint">
-              <div class="col-sm-12" *ngIf="checkpoint">
-                <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
-                <button routerLink="/checkpoints" class="btn btn-success edit-submit-button" (click)="save()">Save</button>
-                <!--<button routerLinkActive="active" [routerLink]="['/checkpoints']" type="submit" name="commit" (click)="save()" value="Go" class="btn btn-success edit-submit-button" data-disable-with="Please wait...">Go</button>-->
-                - <a href="#new-checkpoint-examples" style='font-size: .9em' data-toggle="collapse">options</a>
-                <div routerLinkActive="active" [routerLink]="['/checkpoints']">
-                  <a data-toggle="collapse" href="#see-the-checklist" style="width:100%">See the checklist</a>
-                </div>
-                <br>&nbsp;
-              </div>
-            </div>
-            <div class="collapse text-muted" id="new-checkpoint-examples">
-              <div id="new-checkpoint-collapse">
-                <div class="row padding-form-new-checkpoint">
-                  <div class="col-sm-12">
-                    <label style="font-weight:normal;text-transform:lowercase;" class="text-muted">And optionally verify this text</label>
-                    <input class="form-control" style="width: 23%;display: inline-block;margin-left: 2%;" type="text" name="checkpoint[grep_this]" id="checkpoint_grep_this" />
-                    <label class="checkbox-inline" style="margin-left:0;padding-left:0;">
-                      <input type="radio" value="1" checked="checked" name="checkpoint[grep_presence]" id="checkpoint_grep_presence_1" /><span class="text-muted"> is present</span>
-                    </label>
-                    <label class="checkbox-inline" style="margin-left:0;padding-left:0;">
-                      <input type="radio" value="0" name="checkpoint[grep_presence]" id="checkpoint_grep_presence_0" /> <span class="text-muted"> is not present</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="collapse text-muted" id="see-the-checklist">
-              <router-outlet></router-outlet>
-            </div>
-          </form>
-        </div>
-      </div>
+  <div class="row text-center"><br>
+    <div class="col-lg-2 col-md-2 col-xs-2 text-center">
+      <img style="hight:50px; width:50px;" src='assets/img/logo_bam.png'/>
     </div>
-    <div id="sidebar" class="col-lg-2 col-md-2 col-xs-3 pull-right" style="margin-top:50px;">
-      <div id="user-sidebar" class="panel panel-default"
-           style="xwidth:180px;">
-        <div class="panel-heading">Welcome!</div>
-        <div class="panel-body">
-          <a class='btn btn-block btn-success'
-             href="/signup">
-            <i class="fa fa-rocket" aria-hidden="true"></i>&nbsp;Signup for free</a>
-          <a class='btn btn-default btn-block' href="/login">Login</a>
-          <hr>
-          <ul class="nav nav-pills nav-stacked ">
-            <li role="presentation">
-              <a href="http://support.metadot.com/">
-                <i class="fa fa-wrench fa-fw" aria-hidden="true"></i>&nbsp; Support</a>
-            </li>
-            <li role="presentation">
-              <a href="https://github.com/montastic/montastic-api-doc">
-                <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp; REST API</a>
-            </li>
-            <li role="presentation">
-              <a href="/pricing_page">
-                <i class="fa fa-dollar fa-fw" aria-hidden="true"></i>&nbsp; Pricing</a>
-            </li>
-            <li role="presentation">
-              <a href="https://twitter.com/montastic">
-                <i class="fa fa-twitter fa-fw" aria-hidden="true"></i>&nbsp; @montastic</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div class="col-lg-3 col-md-3 col-xs-3 text-center">
+      <h1><span class="title">Bamzooka</span> <span>®</span></h1>
     </div>
-
   </div>
 </div>
+
 
