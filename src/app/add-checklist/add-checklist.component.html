@@ -2,7 +2,7 @@
   <div *ngIf="checkpoint">
     <label>
       Title:
-      <input type="text" [(ngModel)]="checkpoint.title" [ngModelOptions]="{standalone: true}" name="title" placeholder="http://www.your-site.com/page1">
+      <input type="text" formControlName="title" name="title" class="form-control" [(ngModel)]="checkpoint.title" placeholder="http://www.your-site.com/page1">
     </label>
     <label>
       <select class="form-control" [formGroup]="checkpointsForm" [(ngModel)]="checkpoint.project_id" [ngModelOptions]="{standalone: true}" name="id">

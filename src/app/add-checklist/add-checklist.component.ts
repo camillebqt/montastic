@@ -1,9 +1,10 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CheckpointService} from '../models/checkpoint.service';
 import {Checkpoint} from '../models/checkpoint';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {Team} from '../models/team';
 import {FormControl, FormGroup} from '@angular/forms';
+import {interval, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-add-checklist',
@@ -19,12 +20,13 @@ export class AddChecklistComponent implements OnInit {
   navigated = false;
   teams: Team[];
   checkpoint: Checkpoint;
+  private updateSubscription: Subscription;
   constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) {}
 
   save(): void {
     this.checkpointService.save(this.checkpoint).subscribe(checkpoint => {
       this.checkpoint = checkpoint;
-      this.router.navigate(['']);
+      this.router.navigate(['/checkpoints']);
     }, error => (this.error = error));
   }
   getTeams(): void {
