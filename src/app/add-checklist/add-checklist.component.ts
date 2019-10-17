@@ -12,14 +12,13 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class AddChecklistComponent implements OnInit {
   checkpointsForm = new FormGroup({
-    title: new FormControl('')
+    title: new FormControl(''),
+    project_id: new FormControl('')
   });
-  @Input() checkpoint: Checkpoint;
   error: any;
   navigated = false;
-  checkpoints: Checkpoint[];
   teams: Team[];
-  @Output() close = new EventEmitter();
+  checkpoint: Checkpoint;
   constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) {}
 
   save(): void {

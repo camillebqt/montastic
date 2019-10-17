@@ -5,6 +5,7 @@ import {CheckpointInfoComponent} from './checkpoint-info/checkpoint-info.compone
 import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 
 const routes: Routes = [
+  { path: '', component: CheckpointListComponent},
   { path: 'checkpoints', component: CheckpointListComponent},
   { path: 'checkpoints/:id', component: CheckpointInfoComponent}
 ];

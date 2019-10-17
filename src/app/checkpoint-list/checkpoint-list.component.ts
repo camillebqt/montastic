@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../models/checkpoint.service';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Router} from '@angular/router';
+import {Team} from '../models/team';
 
 @Component({
   selector: 'app-checkpoint-list',
@@ -10,14 +11,22 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 })
 export class CheckpointListComponent implements OnInit {
   checkpoints: Checkpoint[];
-  selectedCheckpoint: Checkpoint;
   error: any;
-  addingCheckpoint = false;
-  constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) { }
+  teams: Team[];
+  constructor(private checkpointService: CheckpointService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCheckpoints();
+    this.getTeams();
+  }
 
+  getTeams(): void {
+    this.checkpointService
+      .getTeams()
+      .subscribe(
+        teams => (this.teams = teams),
+        error => (this.error = error)
+      );
   }
   getCheckpoints(): void {
     this.checkpointService
@@ -27,11 +36,8 @@ export class CheckpointListComponent implements OnInit {
         error => (this.error = error)
       );
   }
-/*  onSelect(checkpoint: Checkpoint): void {
-    this.selectedCheckpoint = checkpoint;
-    this.addingCheckpoint = false;
-  }*/
-  getCheckpoint(id: string){
+
+  getCheckpoint(id: string) {
     this.checkpointService
       .getCheckpoint(id)
       .subscribe(

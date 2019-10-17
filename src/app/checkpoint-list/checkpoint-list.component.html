@@ -4,8 +4,8 @@
 <div class="container" style="width: 100% !important; ">
     <span class="ticket-element">
       <div class="table-responsive text-nowrap" style="width: 100%;height: 320px;  ">
-        <table class="table">
-            <tr *ngFor="let checkpoint of checkpoints" (click)="gotoDetail(checkpoint.id)">
+        <table class="table" >
+            <tr *ngFor="let checkpoint of checkpoints" (click)="gotoDetail(checkpoint.id)" >
               <td scope="col">ID: <span class="label label-default" >  {{checkpoint.id}}</span></td>
               <td scope="col">TITLE: <span class="label label-default" > {{checkpoint.title}}</span></td>
             </tr>

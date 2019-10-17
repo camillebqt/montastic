@@ -1,11 +1,11 @@
-<form (ngSubmit)="save()">
+<form [formGroup]="checkpointsForm" (ngSubmit)="save()">
   <div *ngIf="checkpoint">
     <label>
       Title:
-      <input type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
+      <input type="text" [(ngModel)]="checkpoint.title" [ngModelOptions]="{standalone: true}" name="title" placeholder="http://www.your-site.com/page1">
     </label>
     <label>
-      <select class="form-control" [(ngModel)]="checkpoint.project_id" name="first">
+      <select class="form-control" [formGroup]="checkpointsForm" [(ngModel)]="checkpoint.project_id" [ngModelOptions]="{standalone: true}" name="id">
         <option *ngFor="let team of teams" value="{{team.id}}">
         {{team.name}}
         </option>
