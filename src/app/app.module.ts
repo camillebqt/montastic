@@ -6,7 +6,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularDropdownModule } from 'angular-dropdown';
 
 
@@ -44,7 +44,8 @@ import { ChecklistTeamComponent } from './checklist-team/checklist-team.componen
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    AngularDropdownModule
+    AngularDropdownModule,
+    ReactiveFormsModule
   ],
   providers: [CheckpointService, HttpClient],
   bootstrap: [AppComponent]

@@ -2,6 +2,8 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {CheckpointService} from '../models/checkpoint.service';
 import {Checkpoint} from '../models/checkpoint';
 import {ActivatedRoute, Router, Params} from '@angular/router';
+import {Team} from '../models/team';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-add-checklist',
@@ -9,10 +11,14 @@ import {ActivatedRoute, Router, Params} from '@angular/router';
   styleUrls: ['./add-checklist.component.scss']
 })
 export class AddChecklistComponent implements OnInit {
+  checkpointsForm = new FormGroup({
+    title: new FormControl('')
+  });
   @Input() checkpoint: Checkpoint;
   error: any;
   navigated = false;
   checkpoints: Checkpoint[];
+  teams: Team[];
   @Output() close = new EventEmitter();
   constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) {}
 
@@ -22,8 +28,16 @@ export class AddChecklistComponent implements OnInit {
       this.router.navigate(['']);
     }, error => (this.error = error));
   }
-
+  getTeams(): void {
+    this.checkpointService
+      .getTeams()
+      .subscribe(
+        teams => (this.teams = teams),
+        error => (this.error = error)
+      );
+  }
   ngOnInit(): void {
+    this.getTeams();
     this.route.params.forEach((params: Params) => {
       if (params.id !== undefined) {
         const id: string = params.id;

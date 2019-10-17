@@ -1,25 +1,15 @@
+<div class="container">
+  <app-add-checklist></app-add-checklist>
+</div>
 <div class="container" style="width: 100% !important; ">
     <span class="ticket-element">
       <div class="table-responsive text-nowrap" style="width: 100%;height: 320px;  ">
         <table class="table">
-            <tr *ngFor="let checkpoint of checkpoints" (click)="onSelect(checkpoint)" [class.selected]="checkpoint === selectedCheckpoint">
+            <tr *ngFor="let checkpoint of checkpoints" (click)="gotoDetail(checkpoint.id)">
               <td scope="col">ID: <span class="label label-default" >  {{checkpoint.id}}</span></td>
               <td scope="col">TITLE: <span class="label label-default" > {{checkpoint.title}}</span></td>
             </tr>
         </table>
       </div>
     </span>
-
-  <div *ngIf="selectedCheckpoint">
-    <div *ngIf="selectedCheckpoint.id" (click)="gotoDetail()">
-      <h2>
-        {{selectedCheckpoint.id}} : {{selectedCheckpoint.title}} is my website.
-        Click here to see the checklists.
-
-      </h2>
-    </div>
-  </div>
 </div>
-
-
-

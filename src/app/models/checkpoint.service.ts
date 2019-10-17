@@ -32,8 +32,8 @@ export class CheckpointService {
       .pipe(map(data => data), catchError(this.handleError));
   }
 
-  getCheckpoints(projetId): Observable<Checkpoint[]> {
-    const URL = API_BASE_URL + '/checklists?project_id=' + projetId;
+  getCheckpoints(): Observable<Checkpoint[]> {
+    const URL = API_BASE_URL + '/checklists';
     const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
     return this.http
       .get<Checkpoint[]>(URL, {
@@ -65,7 +65,6 @@ export class CheckpointService {
       return this.put(checkpoint);
     }
     return this.post(checkpoint);
-    return this.put(checkpoint);
   }
 
 
@@ -85,7 +84,7 @@ export class CheckpointService {
     const URL = API_BASE_URL + `/checklists`;
     const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
     return this.http
-      .post<Checkpoint>(URL, checkpoint,{
+      .post<Checkpoint>(URL, checkpoint, {
         headers
       })
       .pipe(map(data => data), catchError(this.handleError));

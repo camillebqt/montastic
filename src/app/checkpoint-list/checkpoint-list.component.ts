@@ -9,13 +9,9 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
   styleUrls: ['./checkpoint-list.component.scss']
 })
 export class CheckpointListComponent implements OnInit {
-  @Input() checkpoint: Checkpoint;
-  @Output() close = new EventEmitter();
-  navigated = false; // true if navigated here
   checkpoints: Checkpoint[];
   selectedCheckpoint: Checkpoint;
   error: any;
-  @Input() projectId: string;
   addingCheckpoint = false;
   constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) { }
 
@@ -25,16 +21,16 @@ export class CheckpointListComponent implements OnInit {
   }
   getCheckpoints(): void {
     this.checkpointService
-      .getCheckpoints(this.projectId)
+      .getCheckpoints()
       .subscribe(
         checkpoints => (this.checkpoints = checkpoints),
         error => (this.error = error)
       );
   }
-  onSelect(checkpoint: Checkpoint): void {
+/*  onSelect(checkpoint: Checkpoint): void {
     this.selectedCheckpoint = checkpoint;
     this.addingCheckpoint = false;
-  }
+  }*/
   getCheckpoint(id: string){
     this.checkpointService
       .getCheckpoint(id)
@@ -43,9 +39,8 @@ export class CheckpointListComponent implements OnInit {
         error => (this.error = error)
       );
   }
-  gotoDetail(): void {
-    this.router.navigate(['/checkpoints', this.selectedCheckpoint.id]);
-    this.onSelect(this.checkpoint);
+  gotoDetail(id: string): void {
+    this.router.navigate(['/checkpoints', id]);
   }
 }
 
