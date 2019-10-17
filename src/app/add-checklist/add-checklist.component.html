@@ -1,33 +1,17 @@
-<form [formGroup]="checkpointsForm" (ngSubmit)="save()">
+<form (ngSubmit)="save()">
   <div *ngIf="checkpoint">
     <label>
       Title:
-      <input type="text" [formControlName]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
+      <input type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
     </label>
-    <select class="form-control" [formControlName]="checkpoint.project_id" name="first">
-      <option *ngFor="let team of teams" value="{{team.id}}">
-      {{team.name}}
-      </option>
-    </select>
+    <label>
+      <select class="form-control" [(ngModel)]="checkpoint.project_id" name="first">
+        <option *ngFor="let team of teams" value="{{team.id}}">
+        {{team.name}}
+        </option>
+      </select>
+    </label>
   </div>
   <button type="submit" [disabled]="!checkpointsForm.valid">Submit</button>
 </form>
 
-<form>
-  <div class="row padding-form-new-checkpoint">
-    <div class="col-sm-4">
-      <label>Create a checklist</label>
-    </div>
-  </div>
-  <div class="row padding-form-new-checkpoint">
-    <div class="col-sm-12" *ngIf="checkpoint">
-      <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
-      <select class="form-control" [(ngModel)]="checkpoint.project_id" name="first">
-        <option *ngFor="let team of teams" value="{{team.id}}">
-          {{team.name}}
-        </option>
-      </select>
-      <button routerLinkActive="active" routerLink="/checkpoints" class="btn btn-success edit-submit-button" (click)="save()">Save</button>
-    </div>
-  </div>
-</form>
