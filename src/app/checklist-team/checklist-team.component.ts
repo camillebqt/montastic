@@ -10,7 +10,6 @@ import {Team} from '../models/team';
 export class ChecklistTeamComponent implements OnInit {
   @Input() team: Team;
   @Output() close = new EventEmitter();
-  navigated = false; // true if navigated here
   teams: Team[];
   selectedTeam: Team;
   error: any;

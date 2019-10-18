@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CheckpointService} from '../models/checkpoint.service';
 import {Checkpoint} from '../models/checkpoint';
-import {ActivatedRoute, Router, Params} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Team} from '../models/team';
-import {FormControl, FormGroup} from '@angular/forms';
-import {interval, Subscription} from 'rxjs';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-checklist',
@@ -12,22 +11,22 @@ import {interval, Subscription} from 'rxjs';
   styleUrls: ['./add-checklist.component.scss']
 })
 export class AddChecklistComponent implements OnInit {
-  checkpointsForm = new FormGroup({
-    title: new FormControl(''),
-    project_id: new FormControl('')
-  });
   error: any;
-  navigated = false;
+  newCheckpointForm: FormGroup;
   teams: Team[];
-  checkpoint: Checkpoint;
-  private updateSubscription: Subscription;
-  constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute) {}
+  @Output() newCheckpointSave = new EventEmitter<Checkpoint>();
+  constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute,
+              private fb: FormBuilder) {
+    this.createForm();
+  }
 
-  save(): void {
-    this.checkpointService.save(this.checkpoint).subscribe(checkpoint => {
-      this.checkpoint = checkpoint;
-      this.router.navigate(['/checkpoints']);
-    }, error => (this.error = error));
+  onSubmit(): void {
+    const newCheckpoint: Checkpoint = this.prepareCheckpointToBeSave();
+    this.checkpointService.save(newCheckpoint).subscribe(() => {
+      console.log('Success');
+    }, (err) => {
+      console.log('Error');
+    });
   }
   getTeams(): void {
     this.checkpointService
@@ -39,15 +38,21 @@ export class AddChecklistComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getTeams();
-    this.route.params.forEach((params: Params) => {
-      if (params.id !== undefined) {
-        const id: string = params.id;
-        this.navigated = true;
-        this.checkpointService.getCheckpoint(id).subscribe(checkpoint => (this.checkpoint = checkpoint));
-      } else {
-        this.navigated = false;
-        this.checkpoint = new Checkpoint();
-      }
+  }
+
+  private createForm(): void {
+    console.log('AddChecklistComponent, createForm()');
+    this.newCheckpointForm = this.fb.group({
+      title: ['', Validators.required],
+      project_id: [Validators.required]
     });
+  }
+  private prepareCheckpointToBeSave(): Checkpoint {
+    const newCheckpoint = new Checkpoint();
+    const formValue = this.newCheckpointForm.value;
+    newCheckpoint.title = formValue.title;
+    newCheckpoint.project_id = formValue.team;
+    console.log(newCheckpoint);
+    return newCheckpoint;
   }
 }

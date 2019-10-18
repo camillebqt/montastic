@@ -48,5 +48,6 @@ export class CheckpointListComponent implements OnInit {
   gotoDetail(id: string): void {
     this.router.navigate(['/checkpoints', id]);
   }
+
 }
 
