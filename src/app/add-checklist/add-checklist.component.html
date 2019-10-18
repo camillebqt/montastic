@@ -5,7 +5,7 @@
       <input type="text" formControlName="title" name="title" class="form-control" placeholder="http://www.your-site.com/page1">
     </label>
     <label>
-      <select class="form-control" formControlName="project_id" name="id">
+      <select class="form-control" formControlName="project_id" name="project_id" >
         <option *ngFor="let team of teams" value="{{team.id}}">
           {{team.name}}
         </option>
@@ -14,20 +14,3 @@
   </div>
   <button type="submit" [disabled]="!newCheckpointForm.valid">Submit</button>
 </form>
-
-<!--<form [formGroup]="newCheckpointForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="checkpoint">
-    <label>
-      Title:
-      <input type="text" formControlName="title" name="title" class="form-control" [(ngModel)]="checkpoint.title" placeholder="http://www.your-site.com/page1">
-    </label>
-    <label>
-      <select class="form-control" [formGroup]="checkpointsForm" [(ngModel)]="checkpoint.project_id" [ngModelOptions]="{standalone: true}" name="id">
-        <option *ngFor="let team of teams" value="{{team.id}}">
-        {{team.name}}
-        </option>
-      </select>
-    </label>
-  </div>
-  <button type="submit" [disabled]="!checkpointsForm.valid">Submit</button>
-</form>-->

@@ -8,6 +8,7 @@
             <tr *ngFor="let checkpoint of checkpoints" (click)="gotoDetail(checkpoint.id)" >
               <td scope="col">ID: <span class="label label-default" >  {{checkpoint.id}}</span></td>
               <td scope="col">TITLE: <span class="label label-default" > {{checkpoint.title}}</span></td>
+              <td scope="col">PROJECT ID: <span class="label label-default" > {{checkpoint.project_id}}</span></td>
             </tr>
         </table>
       </div>

@@ -51,7 +51,7 @@ export class AddChecklistComponent implements OnInit {
     const newCheckpoint = new Checkpoint();
     const formValue = this.newCheckpointForm.value;
     newCheckpoint.title = formValue.title;
-    newCheckpoint.project_id = formValue.team;
+    newCheckpoint.project_id = formValue.project_id;
     console.log(newCheckpoint);
     return newCheckpoint;
   }
