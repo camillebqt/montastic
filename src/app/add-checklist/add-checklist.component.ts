@@ -44,7 +44,8 @@ export class AddChecklistComponent implements OnInit {
     console.log('AddChecklistComponent, createForm()');
     this.newCheckpointForm = this.fb.group({
       title: ['', Validators.required],
-      project_id: [Validators.required]
+      project_id: ['', Validators.required],
+      id: this.checkpointService.getCheckpoints()
     });
   }
   private prepareCheckpointToBeSave(): Checkpoint {
@@ -54,5 +55,8 @@ export class AddChecklistComponent implements OnInit {
     newCheckpoint.project_id = formValue.project_id;
     console.log(newCheckpoint);
     return newCheckpoint;
+  }
+  onListeChanged() {
+    this.newCheckpointSave.emit(this.newCheckpointForm.value);
   }
 }

@@ -12,5 +12,5 @@
       </select>
     </label>
   </div>
-  <button type="submit" [disabled]="!newCheckpointForm.valid">Submit</button>
+  <button type="submit" [disabled]="!newCheckpointForm.valid" (click)="onListeChanged()">Submit</button>
 </form>

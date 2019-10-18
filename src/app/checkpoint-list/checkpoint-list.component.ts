@@ -11,6 +11,7 @@ import {Team} from '../models/team';
 })
 export class CheckpointListComponent implements OnInit {
   checkpoints: Checkpoint[];
+  checkpoint = [];
   error: any;
   teams: Team[];
   constructor(private checkpointService: CheckpointService, private router: Router) { }
@@ -37,16 +38,12 @@ export class CheckpointListComponent implements OnInit {
       );
   }
 
-  getCheckpoint(id: string) {
-    this.checkpointService
-      .getCheckpoint(id)
-      .subscribe(
-        checkpoints => (checkpoints = checkpoints),
-        error => (this.error = error)
-      );
-  }
   gotoDetail(id: string): void {
     this.router.navigate(['/checkpoints', id]);
+  }
+  onListe(checkpoint: Checkpoint): void {
+    this.checkpoints.push(checkpoint);
+
   }
 
 }
