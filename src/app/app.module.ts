@@ -8,7 +8,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularDropdownModule } from 'angular-dropdown';
-
+import { AuthService } from './models/auth.service';
+import {AuthGuard} from './models/auth-guard.service';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { HeaderComponentComponent } from './header-component/header-component.co
 import { FooterComponentComponent } from './footer-component/footer-component.component';
 import { AddChecklistComponent } from './add-checklist/add-checklist.component';
 import { ChecklistTeamComponent } from './checklist-team/checklist-team.component';
+import { HomeComponentComponent } from './home-component/home-component.component';
 
 
 
@@ -33,7 +35,8 @@ import { ChecklistTeamComponent } from './checklist-team/checklist-team.componen
     HeaderComponentComponent,
     FooterComponentComponent,
     AddChecklistComponent,
-    ChecklistTeamComponent
+    ChecklistTeamComponent,
+    HomeComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { ChecklistTeamComponent } from './checklist-team/checklist-team.componen
     AngularDropdownModule,
     ReactiveFormsModule
   ],
-  providers: [CheckpointService, HttpClient],
+  providers: [CheckpointService, HttpClient,  AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
