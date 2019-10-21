@@ -111,11 +111,6 @@ export class CheckpointService {
       })
       .pipe(map(data => data), catchError(this.handleError));
   }
-  loadCheckpoint(checkpoint: Checkpoint) {
-    return of<Checkpoint>(checkpoint).pipe(
-      delay(10000)
-    );
-  }
 
   private handleError(res: HttpErrorResponse | any) {
     console.error(res.error || res.body.error);

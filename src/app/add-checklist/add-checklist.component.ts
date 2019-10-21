@@ -26,12 +26,14 @@ export class AddChecklistComponent implements OnInit {
 
   onSubmit(): void {
     const newCheckpoint: Checkpoint = this.prepareCheckpointToBeSave();
-    this.checkpointService.save(newCheckpoint).subscribe((e) => {
-      console.log('Success');
+    this.checkpointService.save(newCheckpoint).subscribe((checkpoint) => {
+      console.log('Success', checkpoint);
+      this.newCheckpointSave.emit(checkpoint);
     }, (err) => {
       console.log('Error');
     });
   }
+
   getTeams(): void {
     this.checkpointService
       .getTeams()
@@ -58,9 +60,5 @@ export class AddChecklistComponent implements OnInit {
     newCheckpoint.project_id = formValue.project_id;
     console.log(newCheckpoint);
     return newCheckpoint;
-  }
-  onListeChanged() {
-    this.onSubmit();
-    this.newCheckpointSave.emit(this.newCheckpointForm.value);
   }
 }

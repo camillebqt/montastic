@@ -30,6 +30,7 @@ export class CheckpointListComponent implements OnInit {
         error => (this.error = error)
       );
   }
+
   getCheckpoints(): void {
     this.checkpointService
       .getCheckpoints()
@@ -46,6 +47,7 @@ export class CheckpointListComponent implements OnInit {
     this.checkpoints.push(checkpoint);
 
   }
+
 
 }
 
