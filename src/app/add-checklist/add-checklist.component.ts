@@ -4,6 +4,9 @@ import {Checkpoint} from '../models/checkpoint';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Team} from '../models/team';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { tap } from 'rxjs/operators';
+import {Observable} from 'rxjs';
+
 
 @Component({
   selector: 'app-add-checklist',
@@ -14,6 +17,7 @@ export class AddChecklistComponent implements OnInit {
   error: any;
   newCheckpointForm: FormGroup;
   teams: Team[];
+  checkpoint: Checkpoint;
   @Output() newCheckpointSave = new EventEmitter<Checkpoint>();
   constructor(private checkpointService: CheckpointService, private router: Router, private route: ActivatedRoute,
               private fb: FormBuilder) {
@@ -22,7 +26,7 @@ export class AddChecklistComponent implements OnInit {
 
   onSubmit(): void {
     const newCheckpoint: Checkpoint = this.prepareCheckpointToBeSave();
-    this.checkpointService.save(newCheckpoint).subscribe(() => {
+    this.checkpointService.save(newCheckpoint).subscribe((e) => {
       console.log('Success');
     }, (err) => {
       console.log('Error');
@@ -45,10 +49,9 @@ export class AddChecklistComponent implements OnInit {
     this.newCheckpointForm = this.fb.group({
       title: ['', Validators.required],
       project_id: ['', Validators.required],
-      id: this.checkpointService.getCheckpoints()
     });
   }
-  private prepareCheckpointToBeSave(): Checkpoint {
+  public prepareCheckpointToBeSave(): Checkpoint {
     const newCheckpoint = new Checkpoint();
     const formValue = this.newCheckpointForm.value;
     newCheckpoint.title = formValue.title;
@@ -57,6 +60,7 @@ export class AddChecklistComponent implements OnInit {
     return newCheckpoint;
   }
   onListeChanged() {
+    this.onSubmit();
     this.newCheckpointSave.emit(this.newCheckpointForm.value);
   }
 }

@@ -14,7 +14,8 @@ export class CheckpointListComponent implements OnInit {
   checkpoint = [];
   error: any;
   teams: Team[];
-  constructor(private checkpointService: CheckpointService, private router: Router) { }
+  constructor(private checkpointService: CheckpointService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getCheckpoints();

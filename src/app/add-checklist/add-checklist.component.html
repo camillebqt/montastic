@@ -1,4 +1,4 @@
-<form [formGroup]="newCheckpointForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="newCheckpointForm" (ngSubmit)="onListeChanged()">
   <div class="form-group">
     <label>
       Title:
@@ -12,5 +12,5 @@
       </select>
     </label>
   </div>
-  <button type="submit" [disabled]="!newCheckpointForm.valid" (click)="onListeChanged()">Submit</button>
+  <button type="submit" [disabled]="!newCheckpointForm.valid">Submit</button>
 </form>

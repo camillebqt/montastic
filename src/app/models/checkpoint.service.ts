@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Checkpoint } from './checkpoint';
 import {API_URL, API_BASE_URL} from './global';
 import {Team} from './team';
+import { delay } from 'rxjs/operators';
 
 @Injectable()
 export class CheckpointService {
@@ -109,6 +110,11 @@ export class CheckpointService {
         headers
       })
       .pipe(map(data => data), catchError(this.handleError));
+  }
+  loadCheckpoint(checkpoint: Checkpoint) {
+    return of<Checkpoint>(checkpoint).pipe(
+      delay(10000)
+    );
   }
 
   private handleError(res: HttpErrorResponse | any) {
