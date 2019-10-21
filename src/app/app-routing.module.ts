@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {CheckpointListComponent} from './checkpoint-list/checkpoint-list.component';
 import {CheckpointInfoComponent} from './checkpoint-info/checkpoint-info.component';
 import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
-import { AuthService } from './models/auth.service';
 import {AuthGuard} from './models/auth-guard.service';
 import {HomeComponentComponent} from './home-component/home-component.component';
 
