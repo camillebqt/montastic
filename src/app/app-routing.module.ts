@@ -7,7 +7,8 @@ import {AuthGuard} from './models/auth-guard.service';
 import {HomeComponentComponent} from './home-component/home-component.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponentComponent},
+  { path: '', canActivate: [AuthGuard] , component: CheckpointListComponent},
+  { path: 'home', component: HomeComponentComponent},
   { path: 'checkpoints', canActivate: [AuthGuard], component: CheckpointListComponent},
   { path: 'checkpoints/:id', canActivate: [AuthGuard], component: CheckpointInfoComponent}
 ];
