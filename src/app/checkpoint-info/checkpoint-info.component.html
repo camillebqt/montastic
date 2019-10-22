@@ -1,4 +1,4 @@
-<button  routerLinkActive="active" [routerLink]="['']">Home</button>
+<button  routerLinkActive="active" [routerLink]="['/checkpoints']">Home</button>
 <div *ngIf="checkpoint">
   <h2 class="text-center">{{checkpoint.title}} Details</h2>
   <table align="center">
@@ -12,6 +12,6 @@
     </tr>
   </table>
   <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
-  <button routerLink="/checkpoints" class="btn btn-success edit-submit-button" (click)="save()">Update</button>
-  <button routerLink="/checkpoints" class="btn btn-success edit-submit-button" (click)="delete()">Delete</button>
+  <button class="btn btn-success edit-submit-button" (click)="save()">Update</button>
+  <button class="btn btn-success edit-submit-button" (click)="delete()">Delete</button>
 </div>

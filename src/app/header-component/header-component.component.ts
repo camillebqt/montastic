@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { AuthService} from '../models/auth.service';
 
 @Component({
   selector: 'app-header-component',
@@ -6,8 +8,17 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./header-component.component.scss']
 })
 export class HeaderComponentComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit(): void {
+  authStatus: boolean;
+  constructor(private authService: AuthService, private router: Router) { }
+
+  ngOnInit() {
+    this.authStatus = this.authService.isAuth;
+  }
+
+  onSignOut() {
+    this.authService.signOut();
+    this.authStatus = this.authService.isAuth;
+    this.router.navigate(['']);
   }
 }
