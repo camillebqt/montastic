@@ -1,16 +1,20 @@
 <form [formGroup]="newCheckpointForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
+    <h2>Add a checklist !</h2>
     <label>
       Title:
       <input type="text" formControlName="title" name="title" class="form-control" placeholder="http://www.your-site.com/page1">
     </label>
     <label>
-      <select class="form-control" formControlName="project_id" name="project_id" >
+      <select class="form-control" formControlName="project_id">
+        <option value="" selected disabled hidden>
+          Select a team
+        </option>
         <option *ngFor="let team of teams" value="{{team.id}}">
           {{team.name}}
         </option>
       </select>
     </label>
   </div>
-  <button type="submit" [disabled]="!newCheckpointForm.valid">Submit</button>
+  <button class="btn btn-warning" type="submit" [disabled]="!newCheckpointForm.valid">Submit</button>
 </form>

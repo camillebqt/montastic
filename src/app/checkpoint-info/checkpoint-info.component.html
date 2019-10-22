@@ -1,17 +1,19 @@
-<button  routerLinkActive="active" [routerLink]="['/checkpoints']">Home</button>
-<div *ngIf="checkpoint">
-  <h2 class="text-center">{{checkpoint.title}} Details</h2>
+<br><br>
+<div class="container" *ngIf="checkpoint" style="width:30%;">
+  <h2 class="text-center"><span style="text-decoration:underline;">{{checkpoint.title}} details </span></h2>
   <table align="center">
     <tr>
-      <td scope="col" class="title"><label>Ticket ID: </label></td>
+      <td scope="col" class="title"><label>Ticket ID : </label></td>
       <td>{{checkpoint.id}}</td>
     </tr>
     <tr>
-      <td scope="col" class="title"><label>Name: </label></td>
+      <td scope="col" class="title"><label>Name : </label></td>
       <td>{{checkpoint.title}}</td>
     </tr>
   </table>
-  <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
-  <button class="btn btn-success edit-submit-button" (click)="save()">Update</button>
-  <button class="btn btn-success edit-submit-button" (click)="delete()">Delete</button>
+  <div class="inline">
+    <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
+    <button class="btn btn-outline-success edit-submit-button" (click)="save()">Update</button>
+    <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="delete()">Delete</button>
+  </div>
 </div>
