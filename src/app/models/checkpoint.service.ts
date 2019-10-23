@@ -8,7 +8,6 @@ import {Team} from './team';
 
 @Injectable()
 export class CheckpointService {
-  // readonly API_KEY = 'BAM-d4942cc2205c473abda2bfc4b7e884768229d73262384d4aad75f6ca262e9037';
   constructor(private http: HttpClient) {}
   getTeams(): Observable<Team[]> {
     const URL = this.baseUrl + '/all_my_teams';
