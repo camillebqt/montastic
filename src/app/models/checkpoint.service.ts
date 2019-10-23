@@ -11,7 +11,7 @@ export class CheckpointService {
   // readonly API_KEY = 'BAM-d4942cc2205c473abda2bfc4b7e884768229d73262384d4aad75f6ca262e9037';
   constructor(private http: HttpClient) {}
   getTeams(): Observable<Team[]> {
-    const URL = API_BASE_URL + '/all_my_teams';
+    const URL = this.baseUrl + '/all_my_teams';
     const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
       .get<Team[]>(URL, {
@@ -20,7 +20,7 @@ export class CheckpointService {
       .pipe(map(data => data), catchError(this.handleError));
   }
   getTeam(id: string): Observable<Team> {
-    const URL = API_BASE_URL + `/all_my_teams/${id}`;
+    const URL = this.baseUrl + `/all_my_teams/${id}`;
     const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
       .get<Team>(URL, {
@@ -28,9 +28,21 @@ export class CheckpointService {
       })
       .pipe(map(data => data), catchError(this.handleError));
   }
-
+  getWorkspace() {
+    const URL = API_URL + '/current_api_key';
+    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
+    console.log('<<<<<<<API KEY:', sessionStorage.getItem('API_KEY'));
+    return this.http
+      .get<any>(URL, {
+        headers
+      })
+      .pipe(map(data => data), catchError(this.handleError));
+  }
+  get baseUrl() {
+    return API_BASE_URL + '/' + sessionStorage.getItem('workspace_id');
+  }
   getCheckpoints(): Observable<Checkpoint[]> {
-    const URL = API_BASE_URL + '/checklists';
+    const URL = this.baseUrl + '/checklists';
     const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     console.log('<<<<<<<API KEY:', sessionStorage.getItem('API_KEY'));
     return this.http
@@ -79,7 +91,7 @@ export class CheckpointService {
 
   // Add new Checkpoint
   private post(checkpoint: Checkpoint) {
-    const URL = API_BASE_URL + `/checklists`;
+    const URL = this.baseUrl + `/checklists`;
     const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
       .post<Checkpoint>(URL, checkpoint, {
