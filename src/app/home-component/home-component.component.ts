@@ -20,16 +20,22 @@ export class HomeComponentComponent implements OnInit {
   onSignIn() {
     sessionStorage.setItem('API_KEY', this.apiKeyInput);
     this.checkpointService.getWorkspace().subscribe(
-      data => (sessionStorage.setItem('workspace_id', data.workspace_id))
-    );
-    this.authService.signIn().then(
+      data => {
+        sessionStorage.setItem('workspace_id', data.workspace_id);
+        this.authService.signIn().then(
 
-      () => {
+          () => {
 
-        this.authStatus = this.authService.isAuth;
-        this.router.navigate(['checkpoints']);
+            this.authStatus = this.authService.isAuth;
+            this.router.navigate(['checkpoints']);
+          }
+        );
+      },
+      error => {
+        alert(error.message);
       }
     );
+
   }
 
 
