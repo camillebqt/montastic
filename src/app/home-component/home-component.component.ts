@@ -22,9 +22,9 @@ export class HomeComponentComponent implements OnInit {
     this.checkpointService.getWorkspace().subscribe(
       data => {
         sessionStorage.setItem('workspace_id', data.workspace_id);
-        this.authService.signIn().then(
+        this.authService.signIn().subscribe(
 
-          () => {
+          (value) => {
 
             this.authStatus = this.authService.isAuth;
             this.router.navigate(['checkpoints']);

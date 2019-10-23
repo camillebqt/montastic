@@ -1,16 +1,19 @@
+import {Observable} from 'rxjs';
+
 export class AuthService {
 
   isAuth = false;
   signIn() {
-    return new Promise(
-      (resolve, reject) => {
-        setTimeout(
-          () => {
-            this.isAuth = true;
-            resolve(true);
-          }, 2000
-        );
-      }
+    return new Observable(observer => {
+      setTimeout(() => {
+        this.isAuth = true;
+        observer.next(true);
+      }, 2000);
+    }
+      // (resolve, reject) => {
+      //   this.isAuth = true;
+      //   resolve(true);
+      // }
     );
   }
 
