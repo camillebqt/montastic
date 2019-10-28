@@ -4,11 +4,11 @@ import { AuthService} from '../models/auth.service';
 import {API_KEY} from '../models/global';
 import {CheckpointService} from '../models/checkpoint.service';
 @Component({
-  selector: 'app-home-component',
-  templateUrl: './home-component.component.html',
-  styleUrls: ['./home-component.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class HomeComponentComponent implements OnInit {
+export class LoginComponent implements OnInit {
   @Input() apiKeyInput: string = API_KEY;
   authStatus: boolean;
   constructor(private authService: AuthService, private router: Router, private checkpointService: CheckpointService) { }

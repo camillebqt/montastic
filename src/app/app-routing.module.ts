@@ -4,10 +4,10 @@ import {CheckpointListComponent} from './checkpoint-list/checkpoint-list.compone
 import {CheckpointInfoComponent} from './checkpoint-info/checkpoint-info.component';
 import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 import {AuthGuard} from './models/auth-guard.service';
-import {HomeComponentComponent} from './home-component/home-component.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponentComponent},
+  { path: '', component: LoginComponent},
   { path: 'checkpoints', canActivate: [AuthGuard], component: CheckpointListComponent},
   { path: 'checkpoints/:id', canActivate: [AuthGuard], component: CheckpointInfoComponent}
 ];

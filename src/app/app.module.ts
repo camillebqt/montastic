@@ -21,7 +21,7 @@ import { HeaderComponentComponent } from './header-component/header-component.co
 import { FooterComponentComponent } from './footer-component/footer-component.component';
 import { AddChecklistComponent } from './add-checklist/add-checklist.component';
 import { ChecklistTeamComponent } from './checklist-team/checklist-team.component';
-import { HomeComponentComponent } from './home-component/home-component.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -36,7 +36,7 @@ import { HomeComponentComponent } from './home-component/home-component.componen
     FooterComponentComponent,
     AddChecklistComponent,
     ChecklistTeamComponent,
-    HomeComponentComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
