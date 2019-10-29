@@ -22,6 +22,8 @@ import { FooterComponentComponent } from './footer-component/footer-component.co
 import { AddChecklistComponent } from './add-checklist/add-checklist.component';
 import { ChecklistTeamComponent } from './checklist-team/checklist-team.component';
 import { LoginComponent } from './login/login.component';
+import {AuthModule} from './auth.module';
+import {AuthRoutingModule} from './auth-module.routing';
 
 
 
@@ -49,7 +51,9 @@ import { LoginComponent } from './login/login.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AngularDropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule,
+    AuthRoutingModule
   ],
   providers: [CheckpointService, HttpClient,  AuthService, AuthGuard],
   bootstrap: [AppComponent]
