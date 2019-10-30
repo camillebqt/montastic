@@ -5,7 +5,9 @@ import { ErrorDialogComponent} from '../error-dialog/error-dialog.component';
 @Injectable()
 export class ErrorDialogService {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {
+  }
+
   openDialog(data): void {
     const dialogRef = this.dialog.open(ErrorDialogComponent, {
       width: '300px',

@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../models/checkpoint.service';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+
 @Component({
   selector: 'app-checkpoint-info',
   templateUrl: './checkpoint-info.component.html',
@@ -16,7 +19,8 @@ export class CheckpointInfoComponent implements OnInit {
   constructor(
     private checkpointService: CheckpointService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -44,5 +48,18 @@ export class CheckpointInfoComponent implements OnInit {
       this.checkpoint = checkpoint;
       this.router.navigate(['/checkpoints']);
     }, error => (this.error = error));
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '350px',
+      data: 'Do you confirm the deletion of this data?'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        this.delete();
+      }
+    });
   }
 }

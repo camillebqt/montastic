@@ -27,7 +27,7 @@ import {AuthModule} from './auth.module';
 import {AuthRoutingModule} from './auth-module.routing';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import {ErrorDialogService} from './models/errordialog.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {
   Overlay,
   OverlayContainer, OverlayKeyboardDispatcher,
@@ -38,6 +38,7 @@ import {
 } from '@angular/cdk/overlay';
 import {Platform} from '@angular/cdk/platform';
 import {Directionality} from '@angular/cdk/bidi';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 
@@ -53,7 +54,8 @@ import {Directionality} from '@angular/cdk/bidi';
     AddChecklistComponent,
     ChecklistTeamComponent,
     LoginComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import {Directionality} from '@angular/cdk/bidi';
     AngularDropdownModule,
     ReactiveFormsModule,
     AuthModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    MatDialogModule
   ],
   providers: [CheckpointService, HttpClient,  AuthService, AuthGuard, ErrorDialogService, MatDialog,
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
