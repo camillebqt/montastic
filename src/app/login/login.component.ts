@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { AuthService} from '../models/auth.service';
 import {API_KEY} from '../models/global';
 import {CheckpointService} from '../models/checkpoint.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,14 +17,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.authStatus = this.authService.isAuth;
   }
-
   onSignIn() {
     sessionStorage.setItem('API_KEY', this.apiKeyInput);
     this.checkpointService.getWorkspace().subscribe(
       data => {
         sessionStorage.setItem('workspace_id', data.workspace_id);
         this.authService.signIn().subscribe(
-
           (value) => {
 
             this.authStatus = this.authService.isAuth;
@@ -31,12 +30,6 @@ export class LoginComponent implements OnInit {
           }
         );
       },
-      error => {
-        alert(error.message);
-      }
     );
-
   }
-
-
 }

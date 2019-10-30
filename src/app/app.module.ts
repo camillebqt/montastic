@@ -4,12 +4,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularDropdownModule } from 'angular-dropdown';
 import { AuthService } from './models/auth.service';
 import {AuthGuard} from './models/auth-guard.service';
+import { HttpConfigInterceptor} from './models/httpconfig.interceptor';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,19 @@ import { ChecklistTeamComponent } from './checklist-team/checklist-team.componen
 import { LoginComponent } from './login/login.component';
 import {AuthModule} from './auth.module';
 import {AuthRoutingModule} from './auth-module.routing';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import {ErrorDialogService} from './models/errordialog.service';
+import {MatDialog} from '@angular/material/dialog';
+import {
+  Overlay,
+  OverlayContainer, OverlayKeyboardDispatcher,
+  OverlayPositionBuilder,
+  ScrollDispatcher,
+  ScrollStrategyOptions,
+  ViewportRuler
+} from '@angular/cdk/overlay';
+import {Platform} from '@angular/cdk/platform';
+import {Directionality} from '@angular/cdk/bidi';
 
 
 
@@ -38,7 +52,8 @@ import {AuthRoutingModule} from './auth-module.routing';
     FooterComponentComponent,
     AddChecklistComponent,
     ChecklistTeamComponent,
-    LoginComponent
+    LoginComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +70,9 @@ import {AuthRoutingModule} from './auth-module.routing';
     AuthModule,
     AuthRoutingModule
   ],
-  providers: [CheckpointService, HttpClient,  AuthService, AuthGuard],
+  providers: [CheckpointService, HttpClient,  AuthService, AuthGuard, ErrorDialogService, MatDialog,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

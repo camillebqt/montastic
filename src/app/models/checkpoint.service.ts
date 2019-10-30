@@ -121,7 +121,7 @@ export class CheckpointService {
   }
 
   private handleError(res: HttpErrorResponse | any) {
-    console.error(res.error || res.body.error);
+    console.log(res);
     return observableThrowError(res.error || 'Server error');
   }
 }
