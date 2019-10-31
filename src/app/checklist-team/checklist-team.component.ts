@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CheckpointService} from '../models/checkpoint.service';
+import {CheckpointService} from '../services/checkpoint.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Team} from '../models/team';
 @Component({

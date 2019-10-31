@@ -6,16 +6,16 @@ export class AuthService {
   signIn() {
     return of(this.isAuth = true).pipe(delay(2000));
   }
-      /*setTimeout(() => {
-        this.isAuth = true;
-        observer.next(true);
-      }, 2000);*/
+  /*setTimeout(() => {
+    this.isAuth = true;
+    observer.next(true);
+  }, 2000);*/
   //}
-      // (resolve, reject) => {
-      //   this.isAuth = true;
-      //   resolve(true);
-      // }
-    //);
+  // (resolve, reject) => {
+  //   this.isAuth = true;
+  //   resolve(true);
+  // }
+  //);
   //}
 
   signOut() {

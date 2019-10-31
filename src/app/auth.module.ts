@@ -1,6 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { AuthService } from './models/auth.service';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({

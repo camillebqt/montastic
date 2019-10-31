@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {CheckpointListComponent} from './checkpoint-list/checkpoint-list.component';
 import {CheckpointInfoComponent} from './checkpoint-info/checkpoint-info.component';
 import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
-import {AuthGuard} from './models/auth-guard.service';
+import {AuthGuard} from './services/auth-guard.service';
 import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [

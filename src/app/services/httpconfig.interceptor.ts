@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import {ErrorDialogService} from './errordialog.service';
 import {API_KEY} from '../models/global';
 
 import {
@@ -14,7 +13,7 @@ import {
 } from '@angular/common/http';
 
 @Injectable() export class HttpConfigInterceptor implements HttpInterceptor {
-  constructor(private errorDialogService: ErrorDialogService) { }
+  constructor() { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const API_KEY: string = localStorage.getItem('API_KEY');
@@ -34,13 +33,5 @@ import {
         return event;
       }));
   }
-  catchError(error: HttpErrorResponse) {
-    let data = {};
-    data = {
-      reason: error && error.error.reason ? error.error.reason : '',
-      status: error.status
-    };
-    this.errorDialogService.openDialog(data);
-    return throwError(error);
-  }
+
 }

@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { AuthService} from '../models/auth.service';
+import { AuthService} from '../services/auth.service';
 import {API_KEY} from '../models/global';
-import {CheckpointService} from '../models/checkpoint.service';
+import {CheckpointService} from '../services/checkpoint.service';
 
 @Component({
   selector: 'app-login',
