@@ -10,7 +10,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularDropdownModule } from 'angular-dropdown';
 import { AuthService } from './services/auth.service';
 import {AuthGuard} from './services/auth-guard.service';
-import { HttpConfigInterceptor} from './services/httpconfig.interceptor';
 
 
 import { AppComponent } from './app.component';
@@ -26,9 +25,7 @@ import { LoginComponent } from './login/login.component';
 import {AuthModule} from './auth.module';
 import {AuthRoutingModule} from './auth-module.routing';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-
-
-
+import {ConfirmationDialogService} from './services/confirmation-dialog.service';
 
 
 @NgModule({
@@ -58,9 +55,11 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     AuthModule,
     AuthRoutingModule
   ],
-  providers: [CheckpointService, HttpClient,  AuthService, AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+  providers: [CheckpointService, HttpClient,  AuthService, AuthGuard, ConfirmationDialogService
     ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ ConfirmDialogComponent ] ,
+  exports: [ ConfirmDialogComponent ]
+
 })
 export class AppModule { }

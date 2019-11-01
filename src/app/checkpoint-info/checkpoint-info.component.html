@@ -14,6 +14,6 @@
   <div class="inline">
     <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
     <button class="btn btn-outline-success edit-submit-button" (click)="save()">Update</button>
-    <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="delete()">Delete</button>
+    <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
   </div>
 </div>

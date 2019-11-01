@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../services/checkpoint.service';
-import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import {ConfirmationDialogService} from '../services/confirmation-dialog.service';
 
 @Component({
   selector: 'app-checkpoint-info',
@@ -19,6 +19,7 @@ export class CheckpointInfoComponent implements OnInit {
     private checkpointService: CheckpointService,
     private route: ActivatedRoute,
     private router: Router,
+    private confirmationDialogService: ConfirmationDialogService
   ) {}
 
   ngOnInit(): void {
@@ -47,17 +48,10 @@ export class CheckpointInfoComponent implements OnInit {
       this.router.navigate(['/checkpoints']);
     }, error => (this.error = error));
   }
-/*  openDialog(): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '350px',
-      data: 'Do you confirm the deletion of this data?'
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Yes clicked');
-        this.delete();
-      }
-    });
-  }*/
+  public openConfirmDialog() {
+    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => console.log('User confirmed:', confirmed))
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
 }

@@ -1,37 +1,23 @@
-import { Injectable } from '@angular/core';
-import { map, catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
-import {API_KEY} from '../models/global';
+import {HttpEvent, HttpHandler, HttpHeaders, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
-import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpResponse,
-  HttpHandler,
-  HttpEvent,
-  HttpErrorResponse
-} from '@angular/common/http';
 
-@Injectable() export class HttpConfigInterceptor implements HttpInterceptor {
-  constructor() { }
+interface HttpInterceptor {
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> }
+      /*const request: string = sessionStorage.getItem('API_KEY');
+      let newHeaders = request.headers;*/
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const API_KEY: string = localStorage.getItem('API_KEY');
-    if (API_KEY) {
-      request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + API_KEY)
-      });
-    }
-    if (!request.headers.has('Content-Type')) {
-      request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
-    }
-    request = request.clone({ headers: request.headers.set('Accept', 'application/json') });
-    return next.handle(request).pipe(
-      map((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
-          console.log('event--->>>', event);
-        }
-        return event;
-      }));
-  }
-
-}
+/*if (request) {
+        request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + request);
+        });
+      }
+      if (!request.headers.has('Content-Type')) {
+          request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+        } request = request.clone({ headers: request.headers.set('Accept', 'application/json') });
+          return next.handle(request).pipe(
+          map((event: HttpEvent<any>) => {
+            if (event instanceof HttpResponse) {
+              console.log('event--->>>', event);
+            }
+            return event;
+          }));*/
