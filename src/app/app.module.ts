@@ -26,6 +26,7 @@ import {AuthModule} from './auth.module';
 import {AuthRoutingModule} from './auth-module.routing';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {ConfirmationDialogService} from './services/confirmation-dialog.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -53,13 +54,12 @@ import {ConfirmationDialogService} from './services/confirmation-dialog.service'
     AngularDropdownModule,
     ReactiveFormsModule,
     AuthModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    NgbModule
   ],
   providers: [CheckpointService, HttpClient,  AuthService, AuthGuard, ConfirmationDialogService
     ],
   bootstrap: [AppComponent],
-  entryComponents: [ ConfirmDialogComponent ] ,
-  exports: [ ConfirmDialogComponent ]
-
+  entryComponents: [ ConfirmDialogComponent ]
 })
 export class AppModule { }
