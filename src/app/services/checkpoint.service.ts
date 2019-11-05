@@ -5,14 +5,16 @@ import { catchError, map } from 'rxjs/operators';
 import { Checkpoint } from '../models/checkpoint';
 import {API_URL, API_BASE_URL, API_KEY} from '../models/global';
 import {Team} from '../models/team';
+import {Interceptor} from './httpconfig.interceptor';
+import {error} from 'util';
 
 @Injectable()
 export class CheckpointService {
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private interceptor: Interceptor) {}
+  headers = this.interceptor.intercept('API_KEY', sessionStorage.getItem('API_KEY'));
   getTeams(): Observable<Team[]> {
     const URL = this.baseUrl + '/all_my_teams';
-    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
+    // const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
       .get<Team[]>(URL, {
         headers
