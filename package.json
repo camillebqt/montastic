@@ -28,7 +28,7 @@
     "@progress/kendo-theme-default": "latest",
     "angular-dropdown": "^0.5.4",
     "angular-in-memory-web-api": "^0.9.0",
-    "bootstrap": "^3.4.1",
+    "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "ng-wormhole": "^3.0.2",

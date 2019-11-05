@@ -9,6 +9,7 @@ import {Team} from '../models/team';
 @Injectable()
 export class CheckpointService {
   constructor(private http: HttpClient) {}
+
   getTeams(): Observable<Team[]> {
     const URL = this.baseUrl + '/all_my_teams';
     const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});

@@ -1,10 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularDropdownModule } from 'angular-dropdown';
@@ -24,9 +21,9 @@ import { ChecklistTeamComponent } from './checklist-team/checklist-team.componen
 import { LoginComponent } from './login/login.component';
 import {AuthModule} from './auth.module';
 import {AuthRoutingModule} from './auth-module.routing';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import {ConfirmationDialogService} from './services/confirmation-dialog.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ConfirmDialogModule} from './confirm-dialog/confirm-dialog.module';
+import {httpInterceptorProviders} from './models/index-interceptor';
 
 
 @NgModule({
@@ -38,8 +35,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FooterComponentComponent,
     AddChecklistComponent,
     ChecklistTeamComponent,
-    LoginComponent,
-    ConfirmDialogComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -48,18 +44,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     DropDownsModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot(),
     AngularDropdownModule,
     ReactiveFormsModule,
     AuthModule,
     AuthRoutingModule,
-    NgbModule
+    NgbModule,
+    ConfirmDialogModule
   ],
-  providers: [CheckpointService, HttpClient,  AuthService, AuthGuard, ConfirmationDialogService
+  providers: [CheckpointService, HttpClient,  AuthService, AuthGuard, httpInterceptorProviders
     ],
-  bootstrap: [AppComponent],
-  entryComponents: [ ConfirmDialogComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

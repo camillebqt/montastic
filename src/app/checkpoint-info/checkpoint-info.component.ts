@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../services/checkpoint.service';
-import {ConfirmationDialogService} from '../services/confirmation-dialog.service';
+import {ConfirmationDialogService} from '../confirm-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-checkpoint-info',
@@ -51,7 +51,12 @@ export class CheckpointInfoComponent implements OnInit {
 
   public openConfirmDialog() {
     this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
-      .then((confirmed) => console.log('User confirmed:', confirmed))
-      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+      .then((confirmed) => {
+        console.log('User confirmed:', confirmed);
+        if (confirmed) {
+          this.delete();
+        }
+      })
+      .catch((error) => console.log(error));
   }
 }

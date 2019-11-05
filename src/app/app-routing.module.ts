@@ -2,9 +2,7 @@ import {NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {CheckpointListComponent} from './checkpoint-list/checkpoint-list.component';
 import {CheckpointInfoComponent} from './checkpoint-info/checkpoint-info.component';
-import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 import {AuthGuard} from './services/auth-guard.service';
-import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: './auth.module#AuthModule'},
@@ -14,10 +12,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })
