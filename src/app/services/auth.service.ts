@@ -21,4 +21,13 @@ export class AuthService {
   signOut() {
     this.isAuth = false;
   }
+  authenticate(apiKey: string): void {
+    this.setApiKey(apiKey);
+  }
+  setApiKey(key: string): void {
+    sessionStorage.setItem('API_KEY', key);
+  }
+  getApiKey(): string {
+    return sessionStorage.getItem('API_KEY');
+  }
 }

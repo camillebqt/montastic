@@ -10,34 +10,24 @@ import {error} from 'util';
 
 @Injectable()
 export class CheckpointService {
-  constructor(private http: HttpClient, private interceptor: Interceptor) {}
-  headers = this.interceptor.intercept('API_KEY', sessionStorage.getItem('API_KEY'));
+  constructor(private http: HttpClient) {}
   getTeams(): Observable<Team[]> {
     const URL = this.baseUrl + '/all_my_teams';
-    // const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
-      .get<Team[]>(URL, {
-        headers
-      })
+      .get<Team[]>(URL)
       .pipe(map(data => data), catchError(this.handleError));
   }
   getTeam(id: string): Observable<Team> {
     const URL = this.baseUrl + `/all_my_teams/${id}`;
-    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
-      .get<Team>(URL, {
-        headers
-      })
+      .get<Team>(URL)
       .pipe(map(data => data), catchError(this.handleError));
   }
   getWorkspace() {
     const URL = API_URL + '/current_api_key';
-    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     console.log('<<<<<<<API KEY:', sessionStorage.getItem('API_KEY'));
     return this.http
-      .get<any>(URL, {
-        headers
-      })
+      .get<any>(URL)
       .pipe(map(data => data), catchError(this.handleError));
   }
   get baseUrl() {
@@ -45,12 +35,9 @@ export class CheckpointService {
   }
   getCheckpoints(): Observable<Checkpoint[]> {
     const URL = this.baseUrl + '/checklists';
-    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     console.log('<<<<<<<API KEY:', sessionStorage.getItem('API_KEY'));
     return this.http
-      .get<Checkpoint[]>(URL, {
-        headers
-      })
+      .get<Checkpoint[]>(URL)
       .pipe(map(data => data), catchError(this.handleError));
 
     /*    return this.http
@@ -60,11 +47,8 @@ export class CheckpointService {
 
   getCheckpoint(id: string): Observable<Checkpoint> {
     const URL = API_URL + `/checklists/${id}`;
-    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
-      .get<Checkpoint>(URL, {
-        headers
-      })
+      .get<Checkpoint>(URL)
       .pipe(map(data => data), catchError(this.handleError));
 
     /*    return this.http
@@ -83,22 +67,16 @@ export class CheckpointService {
   // Delete existing Checkpoint
   delete(checkpoint: Checkpoint) {
     const URL = API_URL + `/checklists/${checkpoint.id}`;
-    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
-      .delete<Checkpoint>(URL, {
-        headers
-      })
+      .delete<Checkpoint>(URL)
       .pipe(map(data => data), catchError(this.handleError));
   }
 
   // Add new Checkpoint
   private post(checkpoint: Checkpoint) {
     const URL = this.baseUrl + `/checklists`;
-    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
-      .post<Checkpoint>(URL, checkpoint, {
-        headers
-      })
+      .post<Checkpoint>(URL, checkpoint)
       .pipe(map(data => data), catchError(this.handleError));
   }
   /*  private post(checkpoint: Checkpoint) {
@@ -115,11 +93,8 @@ export class CheckpointService {
   // Update existing Checkpoint
   private put(checkpoint: Checkpoint) {
     const URL = API_URL + `/checklists/${checkpoint.id}`;
-    const headers = new HttpHeaders({'X-API-KEY': sessionStorage.getItem('API_KEY')});
     return this.http
-      .patch<Checkpoint>(URL, checkpoint, {
-        headers
-      })
+      .patch<Checkpoint>(URL, checkpoint)
       .pipe(map(data => data), catchError(this.handleError));
   }
 

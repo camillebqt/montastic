@@ -2,23 +2,20 @@ import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRe
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {catchError} from 'rxjs/operators';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private authService: AuthService) {}
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     console.log('request intercepted successfully!');
-    const header = req.clone({ headers: req.headers.set('API_KEY', sessionStorage.getItem('API_KEY'))});
+    const requestApiKeyWithHeader = this.authService.getApiKey();
+    const header = req.clone({ headers: req.headers.set('X-API-KEY', requestApiKeyWithHeader)});
     console.log('Sending request with new header now ...');
 
 
-    return next.handle(header).pipe(catchError((error) => {
-
-      console.log('Error Occurred');
-      console.log(error);
-      return Observable.throw(error);
-    })) as any;
+    return next.handle(header);
   }
   /*intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
