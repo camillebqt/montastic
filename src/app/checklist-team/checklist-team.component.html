@@ -6,9 +6,6 @@
           <ul *dropdownMenu class="dropdown-menu">
             <div *ngFor="let team of teams" (click)="onSelect(team)" [class.selected]="team === selectedTeam">
               {{team.name}}
-<!--
-              <app-checkpoint-list [projectId]="team.id"></app-checkpoint-list>
--->
             </div>
           </ul>
         </div>

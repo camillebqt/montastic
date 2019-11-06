@@ -4,9 +4,6 @@ import {Checkpoint} from '../models/checkpoint';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Team} from '../models/team';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { tap } from 'rxjs/operators';
-import {Observable} from 'rxjs';
-
 
 @Component({
   selector: 'app-add-checklist',

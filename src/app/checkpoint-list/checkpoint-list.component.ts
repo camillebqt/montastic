@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../services/checkpoint.service';
 import {Router} from '@angular/router';

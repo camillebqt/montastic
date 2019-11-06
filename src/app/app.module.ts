@@ -23,7 +23,7 @@ import {AuthModule} from './auth.module';
 import {AuthRoutingModule} from './auth-module.routing';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmDialogModule} from './confirm-dialog/confirm-dialog.module';
-import {httpInterceptorProviders} from './models/index-interceptor';
+import {httpInterceptorProviders} from './models/http-interceptor/index-interceptor';
 
 
 @NgModule({

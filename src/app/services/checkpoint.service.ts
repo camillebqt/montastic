@@ -1,12 +1,11 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, throwError as observableThrowError} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Checkpoint } from '../models/checkpoint';
 import {API_URL, API_BASE_URL, API_KEY} from '../models/global';
 import {Team} from '../models/team';
-import {Interceptor} from './httpconfig.interceptor';
-import {error} from 'util';
+
 
 @Injectable()
 export class CheckpointService {
@@ -39,10 +38,6 @@ export class CheckpointService {
     return this.http
       .get<Checkpoint[]>(URL)
       .pipe(map(data => data), catchError(this.handleError));
-
-    /*    return this.http
-          .get<Checkpoint[]>(this.CheckpointUrl)
-          .pipe(map(data => data), catchError(this.handleError));*/
   }
 
   getCheckpoint(id: string): Observable<Checkpoint> {
@@ -50,10 +45,6 @@ export class CheckpointService {
     return this.http
       .get<Checkpoint>(URL)
       .pipe(map(data => data), catchError(this.handleError));
-
-    /*    return this.http
-          .get<Checkpoint[]>(this.CheckpointUrl)
-          .pipe(map(data => data), catchError(this.handleError));*/
   }
 
   save(checkpoint: Checkpoint) {
@@ -79,17 +70,6 @@ export class CheckpointService {
       .post<Checkpoint>(URL, checkpoint)
       .pipe(map(data => data), catchError(this.handleError));
   }
-  /*  private post(checkpoint: Checkpoint) {
-      const URL = API_BASE_URL + '/checklists';
-      const headers = new HttpHeaders({'X-API-KEY': this.API_KEY});
-      // 'Content-Type': 'application/json'
-      return this.http
-        .post<Checkpoint>(URL, checkpoint, {
-          headers
-        })
-        .pipe(catchError(this.handleError));
-    }*/
-
   // Update existing Checkpoint
   private put(checkpoint: Checkpoint) {
     const URL = API_URL + `/checklists/${checkpoint.id}`;

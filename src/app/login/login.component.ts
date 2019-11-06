@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
           (value) => {
 
             this.authStatus = this.authService.isAuth;
-            this.router.navigate(['checkpoints']);
+            // this.router.navigate(['checkpoints']);this.redirectUrl
+            this.router.navigate([this.authService.redirectUrl]);
           }
         );
       },
