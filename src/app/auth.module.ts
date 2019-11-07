@@ -4,9 +4,9 @@ import { AuthService } from './services/auth.service';
 
 
 @NgModule({
-  imports: [ /* Other nifty modules */ ],
+  imports: [],
   exports: [],
-  declarations: [/* Login-Component, Logoff-component, UserInfoComponent, UserStatusComp */],
+  declarations: [],
   providers: [
 
   ],
