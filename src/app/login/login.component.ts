@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { AuthService} from '../services/auth.service';
 import {API_KEY} from '../models/global';
 import {CheckpointService} from '../services/checkpoint.service';
@@ -12,10 +12,14 @@ import {CheckpointService} from '../services/checkpoint.service';
 export class LoginComponent implements OnInit {
   @Input() apiKeyInput: string = API_KEY;
   authStatus: boolean;
-  constructor(private authService: AuthService, private router: Router, private checkpointService: CheckpointService) { }
+  returnUrl: string;
+  constructor(private authService: AuthService, private router: Router, private checkpointService: CheckpointService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.authStatus = this.authService.isAuth;
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/checkpoints';
+
   }
   onSignIn() {
     sessionStorage.setItem('API_KEY', this.apiKeyInput);
@@ -26,8 +30,7 @@ export class LoginComponent implements OnInit {
           (value) => {
 
             this.authStatus = this.authService.isAuth;
-            // this.router.navigate(['checkpoints']);this.redirectUrl
-            this.router.navigate([this.authService.redirectUrl]);
+            this.router.navigateByUrl(this.returnUrl);
           }
         );
       },
