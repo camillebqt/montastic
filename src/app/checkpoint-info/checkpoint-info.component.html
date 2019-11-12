@@ -1,15 +1,15 @@
 <br><br>
 <div *ngIf="checkpoint">
   <div class="inline" id="mobile">
-    <hr><h1 class="text-center">{{checkpoint.title}} details</h1><hr>
+    <hr><h1 class="text-center" style="max-width: 100%; word-wrap: break-word;">{{checkpoint.title}} details</h1><hr>
     <table align="center">
       <tr>
-        <td scope="col" class="title"><label style="font-weight: bold;">Ticket ID: </label></td>
+        <td scope="col" class="title"><label style="font-weight: bold; width: 100px;">Ticket ID: </label></td>
         <td scope="col"><label>{{checkpoint.id}}</label></td>
       </tr>
       <tr>
         <td scope="col" class="title"><label style="font-weight: bold;">Name: </label></td>
-        <td scope="col"><label>{{checkpoint.title}}</label></td>
+        <td scope="col" ><label style="max-width: 470px; word-wrap: break-word;">{{checkpoint.title}}</label></td>
       </tr>
     </table>
     <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first">
@@ -18,15 +18,15 @@
     <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
   </div>
   <div class="inline" id="non-mobile">
-    <hr><h1 class="text-center">{{checkpoint.title}} details</h1><hr>
+    <hr><h1 class="text-center" style="max-width: 100%; word-wrap: break-word;">{{checkpoint.title}} details</h1><hr>
     <table align="center">
       <tr>
-        <td scope="col" class="title"><label style="font-weight: bold;">Ticket ID: </label></td>
+        <td scope="col" class="title"><label style="font-weight: bold; width: 150px;">Ticket ID: </label></td>
         <td scope="col"><label>{{checkpoint.id}}</label></td>
       </tr>
       <tr>
         <td scope="col" class="title"><label style="font-weight: bold;">Name: </label></td>
-        <td scope="col"><label>{{checkpoint.title}}</label></td>
+        <td scope="col" ><label style="max-width: 470px; word-wrap: break-word;">{{checkpoint.title}}</label></td>
       </tr>
     </table>
     <div class="container" style="width: 35%;"> <hr>
