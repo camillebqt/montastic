@@ -1,20 +1,39 @@
 <br><br>
-<div class="container" *ngIf="checkpoint" style="width:30%;">
-  <h2 class="text-center"><span style="text-decoration:underline;">{{checkpoint.title}} details </span></h2>
-  <table align="center">
-    <tr>
-      <td scope="col" class="title"><label>Ticket ID : </label></td>
-      <td>{{checkpoint.id}}</td>
-    </tr>
-    <tr>
-      <td scope="col" class="title"><label>Name : </label></td>
-      <td>{{checkpoint.title}}</td>
-    </tr>
-  </table>
-  <div class="inline">
-    <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first" placeholder="http://www.your-site.com/page1">
+<div *ngIf="checkpoint">
+  <div class="inline" id="mobile">
+    <hr><h1 class="text-center">{{checkpoint.title}} details</h1><hr>
+    <table align="center">
+      <tr>
+        <td scope="col" class="title"><label style="font-weight: bold;">Ticket ID: </label></td>
+        <td scope="col"><label>{{checkpoint.id}}</label></td>
+      </tr>
+      <tr>
+        <td scope="col" class="title"><label style="font-weight: bold;">Name: </label></td>
+        <td scope="col"><label>{{checkpoint.title}}</label></td>
+      </tr>
+    </table>
+    <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first">
     <hr>
     <button class="btn btn-outline-success edit-submit-button" (click)="save()">Update</button>
     <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
+  </div>
+  <div class="inline" id="non-mobile">
+    <hr><h1 class="text-center">{{checkpoint.title}} details</h1><hr>
+    <table align="center">
+      <tr>
+        <td scope="col" class="title"><label style="font-weight: bold;">Ticket ID: </label></td>
+        <td scope="col"><label>{{checkpoint.id}}</label></td>
+      </tr>
+      <tr>
+        <td scope="col" class="title"><label style="font-weight: bold;">Name: </label></td>
+        <td scope="col"><label>{{checkpoint.title}}</label></td>
+      </tr>
+    </table>
+    <div class="container" style="width: 35%;"> <hr>
+      <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first">
+      <hr>
+      <button class="btn btn-outline-success edit-submit-button" (click)="save()">Update</button>
+      <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
+    </div>
   </div>
 </div>

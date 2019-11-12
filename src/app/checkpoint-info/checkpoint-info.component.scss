@@ -1,3 +1,12 @@
 .container{
   width:100%;
 }
+#non-mobile {
+  min-height: 900px;
+}
+#mobile {
+  zoom: 60%;
+}
+#mobile {
+  min-height: 1000px;
+}

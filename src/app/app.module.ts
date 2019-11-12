@@ -17,7 +17,6 @@ import { CheckpointInfoComponent } from './checkpoint-info/checkpoint-info.compo
 import { HeaderComponentComponent } from './header-component/header-component.component';
 import { FooterComponentComponent } from './footer-component/footer-component.component';
 import { AddChecklistComponent } from './add-checklist/add-checklist.component';
-import { ChecklistTeamComponent } from './checklist-team/checklist-team.component';
 import { LoginComponent } from './login/login.component';
 import {AuthModule} from './auth.module';
 import {AuthRoutingModule} from './auth-module.routing';
@@ -34,7 +33,6 @@ import {httpInterceptorProviders} from './models/http-interceptor/index-intercep
     HeaderComponentComponent,
     FooterComponentComponent,
     AddChecklistComponent,
-    ChecklistTeamComponent,
     LoginComponent
   ],
   imports: [
