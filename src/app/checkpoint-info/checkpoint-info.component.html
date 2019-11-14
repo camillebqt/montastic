@@ -1,28 +1,33 @@
 <br><br>
 <div *ngIf="checkpoint">
   <div class="inline" id="mobile">
-    <hr><h1 class="text-center" style="max-width: 100%; word-wrap: break-word;">{{checkpoint.title}}'s details</h1>
+    <hr><h5 class="text-center" style="max-width: 100%; word-wrap: break-word;">{{checkpoint.title}}'s details</h5>
     <table align="center">
       <tr>
-        <td scope="col" class="title"><label style="font-weight: bold; width: 100px;">Ticket ID: </label></td>
-        <td scope="col"><label>{{checkpoint.id}}</label></td>
+        <td scope="col" class="title"><label style="font-weight: bold; width: 100px;">Team: </label></td>
+        <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id"><fa-icon [icon]="faUsers"></fa-icon> {{team.name}}</span></span></td>
       </tr>
       <tr>
         <td scope="col" class="title"><label style="font-weight: bold;">Name: </label></td>
         <td scope="col" ><label style="max-width: 470px; word-wrap: break-word;">{{checkpoint.title}}</label></td>
       </tr>
     </table>
-    <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first">
-    <hr>
-    <button class="btn btn-outline-success edit-submit-button" (click)="save()">Update</button>
-    <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
+    <div class="container"> <hr>
+      <input class="form-control form-control-url" [class.is-invalid]="checkpoint.title === ''" maxlength="80" type="text" [(ngModel)]="checkpoint.title" name="first">
+      <div class="invalid-feedback" *ngIf="checkpoint.title === ''">
+        Please enter a name.
+      </div>
+      <hr>
+      <button class="btn btn-outline-success edit-submit-button" [disabled]="checkpoint.title ===''" (click)="save()">Update</button>
+      <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
+    </div>
   </div>
   <div class="inline" id="non-mobile">
-    <hr><h1 class="text-center" style="max-width: 100%; word-wrap: break-word;">{{checkpoint.title}}'s details</h1><hr>
+    <hr><h5 class="text-center" style="max-width: 100%; word-wrap: break-word;">{{checkpoint.title}}'s details</h5><hr>
     <table align="center">
       <tr>
-        <td scope="col" class="title"><label style="font-weight: bold; width: 150px;">Ticket ID: </label></td>
-        <td scope="col"><label>{{checkpoint.id}}</label></td>
+        <td scope="col" class="title"><label style="font-weight: bold; width: 150px;">Team: </label></td>
+        <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id"><fa-icon [icon]="faUsers"></fa-icon> {{team.name}}</span></span></td>
       </tr>
       <tr>
         <td scope="col" class="title"><label style="font-weight: bold;">Name: </label></td>
@@ -30,9 +35,12 @@
       </tr>
     </table>
     <div class="container" style="width: 35%;"> <hr>
-      <input class="form-control form-control-url"  type="text" [(ngModel)]="checkpoint.title" name="first">
+      <input class="form-control form-control-url" [class.is-invalid]="checkpoint.title === ''" maxlength="80" type="text" [(ngModel)]="checkpoint.title" name="first">
+      <div class="invalid-feedback" *ngIf="checkpoint.title === ''">
+        Please enter a name.
+      </div>
       <hr>
-      <button class="btn btn-outline-success edit-submit-button" (click)="save()">Update</button>
+      <button class="btn btn-outline-success edit-submit-button" [disabled]="checkpoint.title ===''" (click)="save()">Update</button>
       <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
     </div>
   </div>

@@ -1,12 +1,15 @@
-<form [formGroup]="newCheckpointForm" (ngSubmit)="onSubmit()">
-  <div class="form-group"> <hr>
-    <h2>Add a checklist</h2>
-    <label>
-      Title:
-      <input type="text" formControlName="title" name="title" class="form-control" placeholder="Name of your checklist">
-    </label>
-    <label>
-      <select class="form-control" formControlName="project_id">
+<hr><h5>Add a checklist</h5>
+<form class="form-inline" id="non-mobile" [formGroup]="newCheckpointForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label class="sr-only" for="inlineFormInputName2">Title</label>
+    <input type="text" maxlength="80" formControlName="title" name="title" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Title">
+
+    <label class="sr-only" for="inlineFormInputGroupUsername2">Team</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><fa-icon [icon]="faUsers"></fa-icon></div>
+      </div>
+      <select class="form-control" formControlName="project_id" id="inlineFormInputGroupUsername2">
         <option value="" selected disabled hidden>
           Select a team
         </option>
@@ -14,7 +17,31 @@
           {{team.name}}
         </option>
       </select>
-    </label>
+    </div>
   </div>
-  <button class="btn btn-warning" type="submit" [disabled]="!newCheckpointForm.valid">Submit</button>
+  <button class="btn btn-primary mb-2" type="submit" [disabled]="!newCheckpointForm.valid">Submit</button>
 </form>
+
+<form class="form" id="mobile" [formGroup]="newCheckpointForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label class="sr-only" for="inlineFormInputName2">Title</label>
+    <input type="text" maxlength="80" formControlName="title" name="title" class="form-control mb-2 mr-sm-2" id="inlineFormInputName3" placeholder="Title">
+
+    <label class="sr-only" for="inlineFormInputGroupUsername2">Team</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><fa-icon [icon]="faUsers"></fa-icon></div>
+      </div>
+      <select class="form-control" formControlName="project_id" id="inlineFormInputGroupUsername3">
+        <option value="" selected disabled hidden>
+          Select a team
+        </option>
+        <option *ngFor="let team of teams" value="{{team.id}}">
+          {{team.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <button class="btn btn-primary mb-2" type="submit" [disabled]="!newCheckpointForm.valid">Submit</button>
+</form>
+

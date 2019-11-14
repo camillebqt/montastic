@@ -3,16 +3,24 @@
       <div class="container-submit">
         <app-add-checklist (newCheckpointSave)="onListe($event)"></app-add-checklist>
       </div><br>
-      <div class="table-global" style="width: 100%;">
-        <table class="table" >
-            <tr *ngFor="let checkpoint of checkpoints" class="container">
-              <td scope="col">ID: <span class="label label-default" >  {{checkpoint.id}}</span></td>
-              <td scope="col" style="max-width: 100px; word-wrap: break-word;">TITLE: <span class="label label-default" > {{checkpoint.title}}</span></td>
-              <td scope="col">PROJECT ID: <span class="label label-default" > {{checkpoint.project_id}}</span></td>
-              <button type="button" class="btn btn-outline-info" (click)="gotoDetail(checkpoint.id)">Edit</button>
-            </tr>
-        </table>
-      </div>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Team</th>
+          <th scope="col">Badge</th>
+          <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let checkpoint of checkpoints" class="container">
+          <td scope="col" style="max-width: 500px; word-wrap: break-word;"><span class="label label-default" > {{checkpoint.title}}</span></td>
+          <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id">{{team.name}}</span></span></td>
+          <td scope="col"><span class="label label-default" > badge</span></td>
+          <td scope="col"><button type="button" class="btn btn-outline-info" (click)="gotoDetail(checkpoint.id)">Edit</button></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
     <div id="mobile">
       <div class="container-submit-mobile">
@@ -30,3 +38,4 @@
         </div>
       </div>
 </div>
+

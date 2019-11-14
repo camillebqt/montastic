@@ -3,6 +3,9 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../services/checkpoint.service';
 import {ConfirmationDialogService} from '../confirm-dialog/confirmation-dialog.service';
+import {Team} from '../models/team';
+import {faUsers} from '@fortawesome/free-solid-svg-icons';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-checkpoint-info',
@@ -12,6 +15,8 @@ import {ConfirmationDialogService} from '../confirm-dialog/confirmation-dialog.s
 export class CheckpointInfoComponent implements OnInit {
   @Input() checkpoint: Checkpoint
   error: any;
+  teams: Team[];
+  faUsers = faUsers;
   navigated = false; // true if navigated here
 
 
@@ -33,6 +38,15 @@ export class CheckpointInfoComponent implements OnInit {
         this.checkpoint = new Checkpoint();
       }
     });
+    this.getTeams();
+  }
+  getTeams(): void {
+    this.checkpointService
+      .getTeams()
+      .subscribe(
+        teams => (this.teams = teams),
+        error => (this.error = error)
+      );
   }
 
   save(): void {

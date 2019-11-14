@@ -23,6 +23,7 @@ import {AuthRoutingModule} from './auth-module.routing';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmDialogModule} from './confirm-dialog/confirm-dialog.module';
 import {httpInterceptorProviders} from './models/http-interceptor/index-interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {httpInterceptorProviders} from './models/http-interceptor/index-intercep
     AuthModule,
     AuthRoutingModule,
     NgbModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    FontAwesomeModule
   ],
   providers: [CheckpointService, HttpClient,  AuthService, AuthGuard, httpInterceptorProviders
     ],

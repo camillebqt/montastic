@@ -4,6 +4,8 @@ import {Checkpoint} from '../models/checkpoint';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Team} from '../models/team';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-add-checklist',
@@ -12,6 +14,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AddChecklistComponent implements OnInit {
   error: any;
+  faUsers = faUsers;
   newCheckpointForm: FormGroup;
   teams: Team[];
   checkpoint: Checkpoint;
