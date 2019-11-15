@@ -19,7 +19,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.authStatus = this.authService.isAuth;
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/checkpoints';
-
+    if (this.authService.checkAuth()) {
+      this.authStatus = this.authService.isAuth;
+      this.router.navigateByUrl(this.returnUrl);
+    }
   }
   onSignIn() {
     sessionStorage.setItem('API_KEY', this.apiKeyInput);

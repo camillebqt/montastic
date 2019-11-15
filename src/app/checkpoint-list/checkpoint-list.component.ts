@@ -3,6 +3,7 @@ import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../services/checkpoint.service';
 import {Router} from '@angular/router';
 import {Team} from '../models/team';
+import {faPen} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-checkpoint-list',
@@ -11,9 +12,9 @@ import {Team} from '../models/team';
 })
 export class CheckpointListComponent implements OnInit {
   checkpoints: Checkpoint[];
-  checkpoint = [];
   error: any;
   teams: Team[];
+  faPen = faPen;
   constructor(private checkpointService: CheckpointService, private router: Router) {
   }
 

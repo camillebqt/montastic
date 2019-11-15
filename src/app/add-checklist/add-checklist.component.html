@@ -5,11 +5,11 @@
     <input type="text" maxlength="80" formControlName="title" name="title" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Title">
 
     <label class="sr-only" for="inlineFormInputGroupUsername2">Team</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <div class="input-group-prepend" id="inlineFormInputGroupUsername2">
+    <div class="input-group mb-2 mr-sm-2" id="inlineFormInputGroupUsername2">
+      <div class="input-group-prepend" >
         <div class="input-group-text"><fa-icon [icon]="faUsers"></fa-icon></div>
       </div>
-      <select class="form-control" formControlName="project_id" id="inlineFormInputGroupUsername2">
+      <select class="form-control" formControlName="project_id">
         <option value="" selected disabled hidden>
           Select a team
         </option>

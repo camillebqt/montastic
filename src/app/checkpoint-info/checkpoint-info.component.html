@@ -1,47 +1,44 @@
-<br><br>
 <div *ngIf="checkpoint">
-  <div class="inline" id="mobile">
-    <hr><h5 class="text-center" style="max-width: 100%; word-wrap: break-word;">{{checkpoint.title}}'s details</h5>
+  <div class="main" id="non-mobile">
+    <p class="sign" align="center">{{checkpoint.title}}'s details</p>
     <table align="center">
       <tr>
-        <td scope="col" class="title"><label style="font-weight: bold; width: 100px;">Team: </label></td>
-        <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id"><fa-icon [icon]="faUsers"></fa-icon> {{team.name}}</span></span></td>
+        <td scope="col" class="title"><label style="font-weight: bold; width: 150px;"><fa-icon [icon]="faUsers"></fa-icon> Team: </label></td>
+        <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id">{{team.name}}</span></span></td>
       </tr>
       <tr>
-        <td scope="col" class="title"><label style="font-weight: bold;">Name: </label></td>
+        <td scope="col" class="title"><label style="font-weight: bold;"><fa-icon [icon]="faFileSignature"></fa-icon> Name: </label></td>
         <td scope="col" ><label style="max-width: 470px; word-wrap: break-word;">{{checkpoint.title}}</label></td>
       </tr>
     </table>
-    <div class="container"> <hr>
-      <input class="form-control form-control-url" [class.is-invalid]="checkpoint.title === ''" maxlength="80" type="text" [(ngModel)]="checkpoint.title" name="first">
-      <div class="invalid-feedback" *ngIf="checkpoint.title === ''">
+    <form class="form1">
+      <input class="un form-control form-control-url mb-1" [class.is-invalid]="checkpoint.title === ''" maxlength="80" type="text" [(ngModel)]="checkpoint.title" name="first">
+      <div class="invalid-feedback ml-5" *ngIf="checkpoint.title === ''">
         Please enter a name.
       </div>
-      <hr>
-      <button class="btn btn-outline-success edit-submit-button" [disabled]="checkpoint.title ===''" (click)="save()">Update</button>
-      <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
-    </div>
+      <button class="btn btn-sm btn-outline-primary edit-submit-button mr-3" [disabled]="checkpoint.title ===''" (click)="save()">Update</button>
+      <button class="btn btn-sm btn-outline-danger edit-submit-button mr-1" (click)="openConfirmDialog()">Delete</button>
+    </form>
   </div>
-  <div class="inline" id="non-mobile">
-    <hr><h5 class="text-center" style="max-width: 100%; word-wrap: break-word;">{{checkpoint.title}}'s details</h5><hr>
+  <div class="main" id="mobile">
+    <p class="sign" align="center">{{checkpoint.title}}'s details</p>
     <table align="center">
       <tr>
-        <td scope="col" class="title"><label style="font-weight: bold; width: 150px;">Team: </label></td>
-        <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id"><fa-icon [icon]="faUsers"></fa-icon> {{team.name}}</span></span></td>
+        <td scope="col" class="title"><label style="font-weight: bold; width: 150px;"><fa-icon [icon]="faUsers"></fa-icon> Team: </label></td>
+        <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id">{{team.name}}</span></span></td>
       </tr>
       <tr>
-        <td scope="col" class="title"><label style="font-weight: bold;">Name: </label></td>
+        <td scope="col" class="title"><label style="font-weight: bold;"><fa-icon [icon]="faFileSignature"></fa-icon> Name: </label></td>
         <td scope="col" ><label style="max-width: 470px; word-wrap: break-word;">{{checkpoint.title}}</label></td>
       </tr>
     </table>
-    <div class="container" style="width: 35%;"> <hr>
-      <input class="form-control form-control-url" [class.is-invalid]="checkpoint.title === ''" maxlength="80" type="text" [(ngModel)]="checkpoint.title" name="first">
-      <div class="invalid-feedback" *ngIf="checkpoint.title === ''">
+    <form class="form1">
+      <input class="un form-control form-control-url mb-1" [class.is-invalid]="checkpoint.title === ''" maxlength="80" type="text" [(ngModel)]="checkpoint.title" name="first">
+      <div class="invalid-feedback ml-5" *ngIf="checkpoint.title === ''">
         Please enter a name.
       </div>
-      <hr>
-      <button class="btn btn-outline-success edit-submit-button" [disabled]="checkpoint.title ===''" (click)="save()">Update</button>
-      <button class="btn btn-outline-warning edit-submit-button" style="float: right;" (click)="openConfirmDialog()">Delete</button>
-    </div>
+      <button class="btn btn-sm btn-outline-primary edit-submit-button mr-3" [disabled]="checkpoint.title ===''" (click)="save()">Update</button>
+      <button class="btn btn-sm btn-outline-danger edit-submit-button mr-1" (click)="openConfirmDialog()">Delete</button>
+    </form>
   </div>
 </div>

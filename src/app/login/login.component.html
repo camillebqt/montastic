@@ -1,22 +1,14 @@
-<div class="container" id="non-mobile">
-  <div class="row" >
-    <div class="text-center">
-    </div>
-    <div class="container"><hr>
-      <h2>Authentification</h2>
-      <input type="text" name="title" [(ngModel)]="apiKeyInput" placeholder="Enter your API key">
-      <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">Se connecter</button>
-    </div>
-  </div>
+<div class="main" id="mobile">
+  <p class="sign" align="center">Authentication</p>
+  <form class="form1">
+    <input class="un " type="text" name="title" [(ngModel)]="apiKeyInput" align="center" placeholder="API KEY">
+    <a class="submit" align="center" *ngIf="!authStatus" (click)="onSignIn()">Sign in</a>
+  </form>
 </div>
-<div class="container" id="mobile">
-  <div class="row" >
-    <div class="text-center">
-    </div>
-    <div class="container"><hr>
-      <h2>Authentification</h2>
-      <input type="text" name="title" [(ngModel)]="apiKeyInput" placeholder="Enter your API key">
-      <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">Se connecter</button>
-    </div>
-  </div>
+<div class="main" id="non-mobile">
+  <p class="sign" align="center">Authentication</p>
+  <form class="form1">
+    <input class="un " type="text" name="title" [(ngModel)]="apiKeyInput" align="center" placeholder="API KEY">
+    <a class="submit" align="center" *ngIf="!authStatus" (click)="onSignIn()">Sign in</a>
+  </form>
 </div>

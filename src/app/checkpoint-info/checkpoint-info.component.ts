@@ -5,7 +5,7 @@ import {CheckpointService} from '../services/checkpoint.service';
 import {ConfirmationDialogService} from '../confirm-dialog/confirmation-dialog.service';
 import {Team} from '../models/team';
 import {faUsers} from '@fortawesome/free-solid-svg-icons';
-import {FormGroup} from '@angular/forms';
+import {faFileSignature} from '@fortawesome/free-solid-svg-icons/faFileSignature';
 
 @Component({
   selector: 'app-checkpoint-info',
@@ -17,6 +17,7 @@ export class CheckpointInfoComponent implements OnInit {
   error: any;
   teams: Team[];
   faUsers = faUsers;
+  faFileSignature = faFileSignature;
   navigated = false; // true if navigated here
 
 

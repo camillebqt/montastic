@@ -24,7 +24,6 @@ export class CheckpointService {
   }
   getWorkspace() {
     const URL = API_URL + '/current_api_key';
-    console.log('<<<<<<<API KEY:', sessionStorage.getItem('API_KEY'));
     return this.http
       .get<any>(URL)
       .pipe(map(data => data), catchError(this.handleError));
@@ -34,7 +33,6 @@ export class CheckpointService {
   }
   getCheckpoints(): Observable<Checkpoint[]> {
     const URL = this.baseUrl + '/checklists';
-    console.log('<<<<<<<API KEY:', sessionStorage.getItem('API_KEY'));
     return this.http
       .get<Checkpoint[]>(URL)
       .pipe(map(data => data), catchError(this.handleError));

@@ -1,7 +1,6 @@
-#non-mobile {
-  min-height: 900px;
-}
+@import '../theme.css';
+
 #mobile {
   zoom: 70%;
-  min-height: 1000px;
 }
+
