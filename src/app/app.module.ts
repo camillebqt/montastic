@@ -24,6 +24,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmDialogModule} from './confirm-dialog/confirm-dialog.module';
 import {httpInterceptorProviders} from './models/http-interceptor/index-interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {StorageService} from './services/storage.service';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ConfirmDialogModule,
     FontAwesomeModule
   ],
-  providers: [CheckpointService, HttpClient,  AuthService, AuthGuard, httpInterceptorProviders
+  providers: [CheckpointService, HttpClient,  StorageService, AuthService, AuthGuard, httpInterceptorProviders
     ],
   bootstrap: [AppComponent]
 })
