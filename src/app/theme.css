@@ -93,9 +93,3 @@ a {
   color: #E1BEE7;
   text-decoration: none
 }
-
-.custom-modal-content .modal-content {
-  width: 180% !important;
-  margin-left: -40% !important;
-  margin-top: 40% !important;
-}

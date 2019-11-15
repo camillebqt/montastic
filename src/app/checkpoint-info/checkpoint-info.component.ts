@@ -10,8 +10,7 @@ import {faFileSignature} from '@fortawesome/free-solid-svg-icons/faFileSignature
 @Component({
   selector: 'app-checkpoint-info',
   templateUrl: './checkpoint-info.component.html',
-  styleUrls: ['./checkpoint-info.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./checkpoint-info.component.scss']
 })
 export class CheckpointInfoComponent implements OnInit {
   @Input() checkpoint: Checkpoint
