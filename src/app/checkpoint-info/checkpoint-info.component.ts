@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Checkpoint} from '../models/checkpoint';
 import {CheckpointService} from '../services/checkpoint.service';
@@ -10,7 +10,8 @@ import {faFileSignature} from '@fortawesome/free-solid-svg-icons/faFileSignature
 @Component({
   selector: 'app-checkpoint-info',
   templateUrl: './checkpoint-info.component.html',
-  styleUrls: ['./checkpoint-info.component.scss']
+  styleUrls: ['./checkpoint-info.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CheckpointInfoComponent implements OnInit {
   @Input() checkpoint: Checkpoint
@@ -65,7 +66,7 @@ export class CheckpointInfoComponent implements OnInit {
   }
 
   public openConfirmDialog() {
-    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    this.confirmationDialogService.confirm('Please confirm', 'Do you really want to delete this checkpoint?')
       .then((confirmed) => {
         console.log('User confirmed:', confirmed);
         if (confirmed) {

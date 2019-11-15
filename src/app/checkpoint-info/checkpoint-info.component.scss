@@ -8,6 +8,7 @@
 @import '../theme.css';
 
 button {
-  border-radius: 15px;
+  border-radius: 15px !important;
   float: right;
+  margin-top: 7px;
 }
