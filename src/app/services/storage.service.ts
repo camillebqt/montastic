@@ -6,10 +6,10 @@ import {Injectable} from '@angular/core';
 export class StorageService {
   constructor() {
   }
-  getStorage(): string {
-    return sessionStorage.getItem('API_KEY');
-}
-  setStorage(key: string) {
-    sessionStorage.setItem('API_KEY', key);
-}
+  getStorage(key): string {
+    return localStorage.getItem(key);
+  }
+  setStorage(key: string, value: any) {
+    localStorage.setItem(key, value);
+  }
 }

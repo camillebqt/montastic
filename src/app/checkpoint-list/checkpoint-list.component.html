@@ -1,9 +1,9 @@
 <div class="container" style="width: 100% !important;">
-    <div id="non-mobile">
+    <div id="screen">
       <div class="container-submit">
         <app-add-checklist (newCheckpointSave)="onListe($event)"></app-add-checklist>
       </div><br>
-      <table class="table table-hover">
+      <table class="table table-hover table-responsive" style="width: 100%;">
         <thead>
         <tr>
           <th scope="col">Title</th>
@@ -14,33 +14,10 @@
         </thead>
         <tbody>
         <tr *ngFor="let checkpoint of checkpoints" class="container">
-          <td scope="col" style="max-width: 500px; word-wrap: break-word;"><span class="label label-default" > {{checkpoint.title}}</span></td>
+          <td scope="col" id="title_width" style="word-wrap: break-word;"><span class="label label-default"> {{checkpoint.title}}</span></td>
           <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id">{{team.name}}</span></span></td>
           <td scope="col"><span class="label label-default" ><span class="badge badge-secondary">In progress</span></span></td>
-          <td scope="col"><a id="crayon" (click)="gotoDetail(checkpoint.id)"><fa-icon [icon]="faPen"></fa-icon></a></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-      <div id="mobile">
-      <div class="container-submit">
-        <app-add-checklist (newCheckpointSave)="onListe($event)"></app-add-checklist>
-      </div><br>
-      <table class="table table-hover" id="table-global-mobile" style="width: 100%;">
-        <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Team</th>
-          <th scope="col">Badge</th>
-          <th scope="col">Edit</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let checkpoint of checkpoints" class="container">
-          <td scope="col" style="max-width: 220px; word-wrap: break-word;"><span class="label label-default" > {{checkpoint.title}}</span></td>
-          <td scope="col"><span class="label label-default" *ngFor="let team of teams"><span *ngIf="team.id === checkpoint.project_id">{{team.name}}</span></span></td>
-          <td scope="col"><span class="label label-default" ><span class="badge badge-secondary">In progress</span></span></td>
-          <td scope="col"><a (click)="gotoDetail(checkpoint.id)"><fa-icon [icon]="faPen"></fa-icon></a></td>
+          <td scope="col"><button class="btn btn-sm btn-secondary" (click)="gotoDetail(checkpoint.id)"><fa-icon [icon]="faPen"></fa-icon></button></td>
         </tr>
         </tbody>
       </table>

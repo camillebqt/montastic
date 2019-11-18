@@ -5,11 +5,12 @@ import { catchError, map } from 'rxjs/operators';
 import { Checkpoint } from '../models/checkpoint';
 import {API_URL, API_BASE_URL, API_KEY} from '../models/global';
 import {Team} from '../models/team';
+import {StorageService} from './storage.service';
 
 
 @Injectable()
 export class CheckpointService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private storageService: StorageService) {}
   getTeams(): Observable<Team[]> {
     const URL = this.baseUrl + '/all_my_teams';
     return this.http
@@ -29,7 +30,7 @@ export class CheckpointService {
       .pipe(map(data => data), catchError(this.handleError));
   }
   get baseUrl() {
-    return API_BASE_URL + '/' + sessionStorage.getItem('workspace_id');
+    return API_BASE_URL + '/' + this.storageService.getStorage('workspace_id');
   }
   getCheckpoints(): Observable<Checkpoint[]> {
     const URL = this.baseUrl + '/checklists';

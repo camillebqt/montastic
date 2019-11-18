@@ -1,13 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css);
 @media screen and (max-width: 800px) {
+  #screen {
+    display: inline-block;
+    zoom: 60%;
+  }
+  #title_width {
+    max-width: 210px;
+  }
+  #screen_add {
+    zoom: 90%;
+    display: block;
+  }
   #non-mobile {
     display: none;
   }
-}
+  #block {
+    margin-left: 20px;
+  }
 
+}
 @media screen and (min-width: 800px) {
+  #screen {
+    display: inline-block;
+    zoom: 100%;
+  }
   #mobile {
     display: none;
   }
+  #block {
+    margin-left: 200px;
+  }
+
 }

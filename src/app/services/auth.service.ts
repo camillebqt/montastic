@@ -11,7 +11,7 @@ export class AuthService {
 
   signOut() {
     this.isAuth = false;
-    sessionStorage.clear();
+    localStorage.clear();
 
   }
 
@@ -20,17 +20,15 @@ export class AuthService {
   }
 
   setApiKey(key: string): void {
-    this.storageService.setStorage(key);
-    //sessionStorage.setItem('API_KEY', key);
+    this.storageService.setStorage(key, 'API_KEY');
   }
 
   getApiKey(): string {
-    return this.storageService.getStorage();
-    //return sessionStorage.getItem('API_KEY');
+    return this.storageService.getStorage('API_KEY');
   }
 
   checkAuth() {
-    this.isAuth = (sessionStorage.getItem('API_KEY') != null);
+    this.isAuth = (this.storageService.getStorage('API_KEY') != null);
     return this.isAuth;
   }
 }
